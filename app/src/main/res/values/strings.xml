@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">Foodie_Buddy</string>
+
+    <string-array name="district">
+        <item><b>District</b></item>
+        <item>Dhaka</item>
+    </string-array>
+
+    <string-array name="areas">
+        <item><b>Area</b></item>
+        <item>Banani</item>
+        <item>Banasree</item>
+        <item>Badda</item>
+        <item>Dhaka Cantonment</item>
+        <item>Dhanmondi</item>
+        <item>Gulshan</item>
+        <item>Kakrail</item>
+        <item>Khilgaon</item>
+        <item>Mirpur</item>
+        <item>Mohammadpur</item>
+        <item>Motijheel</item>
+        <item>New Paltan</item>
+        <item>Old Paltan</item>
+        <item>Tejgaon</item>
+        <item>Uttara</item>
+    </string-array>
+
+    <string-array name="types">
+        <item><b>Type</b></item>
+        <item>All</item>
+        <item>BBQ Item</item>
+        <item>Bengali</item>
+        <item>Biriyani</item>
+        <item>Burger</item>
+        <item>Chinese</item>
+        <item>Coffee</item>
+        <item>Continental</item>
+        <item>Dessert</item>
+        <item>Drinks and refreshments</item>
+        <item>Fast Food</item>
+        <item>Fish Items</item>
+        <item>Fried Item</item>
+        <item>Grilled Items</item>
+        <item>Indian</item>
+        <item>Japanese Item</item>
+        <item>Kebab</item>
+        <item>Multi Cuisine</item>
+        <item>Noodles</item>
+        <item>Pasta</item>
+        <item>Pasta and Pizza</item>
+        <item>Pizza</item>
+        <item>Steak</item>
+    </string-array>
+
+    <string-array name="start_time">
+        <item><b>Opens at</b></item>
+        <item>06:30:00</item>
+        <item>07:00:00</item>
+        <item>08:00:00</item>
+        <item>09:00:00</item>
+        <item>10:00:00</item>
+        <item>11:00:00</item>
+        <item>12:00:00</item>
+        <item>13:00:00</item>
+        <item>14:00:00</item>
+    </string-array>
+
+    <string-array name="end_time">
+        <item><b>Closes at</b></item>
+        <item>19:30:00</item>
+        <item>20:00:00</item>
+        <item>21:00:00</item>
+        <item>21:30:00</item>
+        <item>22:00:00</item>
+        <item>22:30:00</item>
+        <item>23:00:00</item>
+        <item>23:30:00</item>
+        <item>23:45:00</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_abc">abc</string>
+</resources>

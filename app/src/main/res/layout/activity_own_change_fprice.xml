@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ownChangeFPrice">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/cpfoodType"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:tabBackground="@android:color/system_notification_accent_color"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabTextColor="@android:color/background_light">
+        android:background="@color/colorPrimary"
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ListView
+        android:id="@+id/cpfoodList"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        android:layout_marginTop="10dp"
+        android:divider="#89f"
+        android:dividerHeight="7dp"
+        android:padding="20dp"
+        android:textAlignment="gravity" />
+
+</LinearLayout>

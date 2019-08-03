@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".mrAddFood">
+
+    <Button
+        android:id="@+id/mrAddFood"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="200dp"
+        android:onClick="mrAddFoodItem"
+        android:text="Add Food"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"/>
+
+    <Button
+        android:id="@+id/delFood"
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="280dp"
+        android:onClick="mrDeleteFoodItem"
+        android:text="Remove Food"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:id="@+id/changeFoodPrice"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="360dp"
+        android:onClick="changePrice"
+        android:text="Change Food Price"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+</RelativeLayout>

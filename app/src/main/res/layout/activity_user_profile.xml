@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".userProfile">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/typetab"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:tabBackground="@color/design_default_color_primary"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabTextColor="@android:color/holo_blue_light">
+        android:background="@color/colorPrimary"
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ListView
+        android:id="@+id/foodList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:divider="#a10"
+        android:dividerHeight="10dp"
+        android:focusable="auto"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:padding="10dp"
+        android:textAlignment="gravity" />
+
+</LinearLayout>

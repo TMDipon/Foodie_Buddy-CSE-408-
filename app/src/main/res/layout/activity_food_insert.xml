@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".FoodInsert">
+
+    <EditText
+        android:id="@+id/fname"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="200dp"
+        android:ems="10"
+        android:hint="Food Name:"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/ftype"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="200dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart" />
+
+    <EditText
+        android:id="@+id/fdesc"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginRight="12dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Enter Description if necessary:"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/fprice"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="410dp"
+        android:ems="10"
+        android:hint="Price:"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/addFood"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="130dp"
+        android:layout_height="55dp"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="520dp"
+        android:onClick="addFood"
+        android:text="Add Food"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.foodie_buddy.loginActivity"
+    android:background="@color/colorPrimary">
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="180dp"
+        android:id="@+id/logmail"
+        android:hint="Enter email address"
+        android:padding="15dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="250dp"
+        android:id="@+id/logpass"
+        android:padding="15dp"
+        android:hint="Enter password:"/>
+
+    <Button
+        android:text="Log in"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="350dp"
+        android:id="@+id/lin"
+        android:layout_centerHorizontal="true"
+        android:padding="14dp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@android:color/background_light"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:onClick="log_in" />
+
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="480dp"
+        android:background="@color/colorPrimaryDark"
+        android:clickable="true"
+        android:onClick="signin"
+        android:paddingLeft="30dp"
+        android:paddingTop="11dp"
+        android:text="Don't Have an Account? Sign in"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18sp" />
+</RelativeLayout>

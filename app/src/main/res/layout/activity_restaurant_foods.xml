@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".restaurantFoods">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/foodType"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:tabBackground="@android:color/holo_red_dark"
+        app:tabGravity="center"
+        app:tabMode="scrollable"
+        app:tabTextColor="@android:color/background_light">
+        android:background="@color/colorPrimary"
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <ListView
+        android:id="@+id/foodList"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="15dp"
+        android:divider="#89b"
+        android:dividerHeight="8dp"
+        android:padding="15dp"
+        android:textAlignment="gravity" />
+
+    <Button
+        android:id="@+id/orderBox"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:background="#553322"
+        android:text="Go to Order Box"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+</LinearLayout>

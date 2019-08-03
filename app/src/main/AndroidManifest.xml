@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.foodie_buddy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ChangeFoodPrice">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ChangeFoodPrice" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ownChangeFPrice">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ownChangeFPrice" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ownDeleteFood">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ownDeleteFood" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".orderBox">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.orderBox" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mrAddFood">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.mrAddFood" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".modifiableRestaurants">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.modifiableRestaurants" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".FoodInsert">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.FoodInsert" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".restaurantFoods"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.restaurantFoods" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userProfile">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.userProfile" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".createRestaurant">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.createRestaurant" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ownerProfile">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ownerProfile" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ownerLogin">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ownerLogin" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".owner">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.owner" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".loginActivity">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.loginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userActivity">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.userActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
