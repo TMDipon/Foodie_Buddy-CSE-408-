@@ -18,6 +18,11 @@ public class OrderItem implements Serializable {
         unitPrice = up;
     }
 
+    public String getOrderItemDesc()
+    {
+        return Integer.toString(FoodId)+"_"+FoodName+"_"+Integer.toString(Amount)+"_"+Double.toString(unitPrice);
+    }
+
     public void addItem()
     {
         this.Amount++;
@@ -35,4 +40,5 @@ public class OrderItem implements Serializable {
     public String getFoodName(){ return this.FoodName; }
 
     public double getFoodPrice(){ return this.unitPrice; }
-    }
+
+}

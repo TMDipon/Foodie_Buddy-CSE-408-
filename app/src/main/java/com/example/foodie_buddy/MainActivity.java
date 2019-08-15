@@ -46,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, userProfile.class));
         }
-
         else if(sharedOwnerManager.getInstance(this).isOwnerLoggedIn())
         {
             finish();
             startActivity(new Intent(this, ownerProfile.class));
         }
+
+        getSupportActionBar().hide();
     }
 }

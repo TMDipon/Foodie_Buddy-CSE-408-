@@ -19,7 +19,13 @@ public class Order implements Serializable {
 
     public String getRestaurantName(){ return this.RestaurantName; }
 
+    public String getRestaurantId(){ return Integer.toString(this.RestaurantId); }
+
+    public String getUserId(){ return Integer.toString(this.UserId); }
+
     public ArrayList<OrderItem> getOrdered_Items(){ return ordered_Items; }
+
+    public int getUniqueItemNumbers(){ return this.ordered_Items.size(); }
 
     public int getOrderStat()
     {

@@ -21,6 +21,8 @@ public class sharedPrefManager {
     private static final String curRestaurant = "curRest";
     private static final String curRestaurantId = "resId";
     private static final String curRestaurantfoods = "cusRestFoods";
+    private static final String lat = "latitude";
+    private static final String lng = "longitude";
 
     private sharedPrefManager(Context context) {
         ctx = context;
@@ -62,6 +64,29 @@ public class sharedPrefManager {
         e.apply();
 
         return true;
+    }
+
+    public void saveLocation(double lati, double longi)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putString(lat,Double.toString(lati));
+        e.putString(lng,Double.toString(longi));
+        e.apply();
+    }
+
+    public Double getLongitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(lng,"99.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getLatitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(lat,"200.9999");
+        return Double.parseDouble(tem);
     }
 
     public void saveRestaurants(String r)

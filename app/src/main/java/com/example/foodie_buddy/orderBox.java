@@ -4,12 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class orderBox extends AppCompatActivity {
 
@@ -22,7 +32,7 @@ public class orderBox extends AppCompatActivity {
         setContentView(R.layout.activity_order_box);
 
         Intent j = getIntent();
-        Order order = (Order)j.getSerializableExtra("sampleObject");
+        final Order order = (Order)j.getSerializableExtra("sampleObject");
 
         tv1 = (TextView)findViewById(R.id.odrRest);
         tv1.setText("Order from: "+order.getRestaurantName());
@@ -73,6 +83,42 @@ public class orderBox extends AppCompatActivity {
         tv3.setText("BDT "+Double.toString(tax));
         tv4.setText("BDT "+Double.toString(dfee));
         tv5.setText("BDT "+Double.toString(total));
+
+
+        Button giveOrder = (Button)findViewById(R.id.confodr);
+
+        giveOrder.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                StringRequest s = new StringRequest(Request.Method.POST, constants.lowner_URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> m = new HashMap<>();
+                        m.put("Uid", order.getUserId());
+                        m.put("Rid", order.getRestaurantId());
+                        m.put("Rname", order.getRestaurantName());
+                        for(int i=0;i<order.getUniqueItemNumbers();i++)
+                        {
+                            m.put(Integer.toString(i),order.getOrdered_Items().get(i).getOrderItemDesc());
+                        }
+
+                        return m;
+                    }
+                };
+
+                RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(s);
+            }
+
+        });
 
     }
 }

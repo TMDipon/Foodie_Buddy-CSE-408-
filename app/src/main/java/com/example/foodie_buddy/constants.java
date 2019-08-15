@@ -27,10 +27,14 @@ public class constants {
         String[] indian = {"Type","Set Menu","Chicken","Beef","Mutton","Tandoori","BBQ","Fish","Vegetables","Naan and Paratha","Biriyani","Polao","Dosa","Salad","Dessert","Drinks"};
         String[] burger = {"Type","Classic Burger","Junior Burger","Chef's Special","Gourmet Burger","Platter","Poutine","Mocktail","Shakes","Sides"};
         String[] all = {"Type","Appetizer","Soup","Shwarma","Pizza Sandwitch","Sandwitch","Pizza","Pasta","Set Menu","Noodles","Burger","Tandoori","BBQ","Kabab","Naan and Paratha","Chicken","Biriyani","Beef","Shakes","Dessert","Drinks"};
+        String[] pizza_pasta = {"Type","Sides","Burger","Pasta","Pizza","Noodles and Chowmein","Set Menu","Drinks"};
 
         mp.put("Indian",indian);
         mp.put("Burger",burger);
         mp.put("All",all);
+        mp.put("Pasta and Pizza",pizza_pasta);
+        mp.put("Pizza",pizza_pasta);
+        mp.put("Pasta",pizza_pasta);
     }
 
 

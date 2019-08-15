@@ -32,8 +32,16 @@ public class restaurantFoods extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        tb.getTabAt(1).select();
-        tb.getTabAt(0).select();
+        if(tb.getTabCount() >= 2)
+        {
+            tb.getTabAt(1).select();
+            tb.getTabAt(0).select();
+        }
+        else if(tb.getTabCount() == 1)
+        {
+            //Toast.makeText(this, Boolean.toString(tb.getTabAt(0).isSelected()), Toast.LENGTH_SHORT).show();
+            tb.getTabAt(0).select();
+        }
     }
 
     @Override
