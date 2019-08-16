@@ -236,7 +236,7 @@ public class userProfile extends AppCompatActivity {
                                 second.setLongitude(ll.longitude);
 
                                 double distanceInMeters = first.distanceTo(second)/1000.0;
-                                Toast.makeText(userProfile.this,k.getString("name")+" "+Double.toString(distanceInMeters), Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(userProfile.this,k.getString("name")+" "+Double.toString(distanceInMeters), Toast.LENGTH_SHORT).show();
                                 if(distanceInMeters <= 3.00000)
                                 {
                                     Restaurants r = new Restaurants(k.getInt("id"),k.getString("name"),k.getString("type"),k.getString("starts_at"),k.getString("closes_at"));

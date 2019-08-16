@@ -1,3 +1,4 @@
+
 package com.example.foodie_buddy;
 
 import android.content.Context;
@@ -105,4 +106,3 @@ public class restaurantAdapter extends BaseAdapter implements ListAdapter {
         return view;
     }
 }
-

@@ -9,23 +9,45 @@
     <TextView
         android:id="@+id/odrRest"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="75dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#555445"
         android:paddingLeft="50dp"
-        android:paddingTop="25dp"
+        android:paddingTop="15dp"
         android:textColor="@android:color/background_light"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/odrdelivAddr1"
+        android:layout_width="115dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="80dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/odrdelivAddr2"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="120dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="10dp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp"/>
+
+    <TextView
         android:id="@+id/odrLabel"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="95dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="145dp"
         android:paddingLeft="140sp"
-        android:paddingTop="20sp"
+        android:paddingTop="10sp"
         android:text="Order Description"
         android:textSize="18sp" />
 
@@ -33,7 +55,7 @@
         android:id="@+id/odramlist"
         android:layout_width="70dp"
         android:layout_height="200dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="195dp"
         android:dividerHeight="5dp" />
 
     <ListView
@@ -41,7 +63,7 @@
         android:layout_width="240dp"
         android:layout_height="200dp"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="195dp"
         android:dividerHeight="5dp" />
 
     <ListView
@@ -49,14 +71,14 @@
         android:layout_width="100dp"
         android:layout_height="200dp"
         android:layout_marginLeft="310dp"
-        android:layout_marginTop="155dp"
+        android:layout_marginTop="195dp"
         android:dividerHeight="5dp" />
 
     <TextView
         android:id="@+id/odrst"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="410dp"
         android:paddingLeft="20sp"
         android:paddingTop="15sp"
         android:text="Subtotal"
@@ -66,7 +88,7 @@
         android:id="@+id/odrstval"
         android:layout_width="210dp"
         android:layout_height="50dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginTop="410dp"
         android:layout_marginLeft="200dp"
         android:paddingLeft="80sp"
         android:paddingTop="15sp"
@@ -76,7 +98,7 @@
         android:id="@+id/odrtax"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="450dp"
         android:paddingLeft="20sp"
         android:paddingTop="15sp"
         android:text="Tax"
@@ -86,7 +108,7 @@
         android:id="@+id/odrtaxval"
         android:layout_width="210dp"
         android:layout_height="50dp"
-        android:layout_marginTop="410dp"
+        android:layout_marginTop="450dp"
         android:layout_marginLeft="200dp"
         android:paddingLeft="80sp"
         android:paddingTop="15sp"
@@ -96,7 +118,7 @@
         android:id="@+id/odrdfee"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="500dp"
         android:paddingLeft="20sp"
         android:paddingTop="15sp"
         android:text="Delivery fee"
@@ -106,7 +128,7 @@
         android:id="@+id/odrdfeeval"
         android:layout_width="210dp"
         android:layout_height="50dp"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="500dp"
         android:layout_marginLeft="200dp"
         android:paddingLeft="80sp"
         android:paddingTop="15sp"
@@ -116,10 +138,10 @@
         android:id="@+id/odrtotal"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="520dp"
+        android:layout_marginTop="550dp"
+        android:background="#ffefff"
         android:paddingLeft="20sp"
         android:paddingTop="15sp"
-        android:background="#ffefff"
         android:text="Total"
         android:textSize="18sp" />
 
@@ -127,18 +149,18 @@
         android:id="@+id/odrtotalval"
         android:layout_width="210dp"
         android:layout_height="50dp"
-        android:layout_marginTop="520dp"
         android:layout_marginLeft="200dp"
+        android:layout_marginTop="550dp"
+        android:background="#ffefff"
         android:paddingLeft="80sp"
         android:paddingTop="15sp"
-        android:background="#ffefff"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/confodr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="600dp"
         android:text="Confirm Order"
         android:textSize="20sp"
         android:textStyle="bold" />
