@@ -20,7 +20,7 @@ public class OrderItem implements Serializable {
 
     public String getOrderItemDesc()
     {
-        return Integer.toString(FoodId)+"_"+FoodName+"_"+Integer.toString(Amount)+"_"+Double.toString(unitPrice);
+        return Integer.toString(FoodId)+"_"+Integer.toString(Amount);
     }
 
     public void addItem()

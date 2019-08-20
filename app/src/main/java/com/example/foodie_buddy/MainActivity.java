@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void Rider(View v)
+    {
+        Intent i = new Intent("com.example.foodie_buddy.riderLogin");
+        startActivity(i);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

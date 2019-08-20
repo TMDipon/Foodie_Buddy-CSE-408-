@@ -125,6 +125,7 @@ public class orderBox extends AppCompatActivity {
                 StringRequest s = new StringRequest(Request.Method.POST, constants.lowner_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        Toast.makeText(orderBox.this, response, Toast.LENGTH_SHORT).show();
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -135,12 +136,13 @@ public class orderBox extends AppCompatActivity {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> m = new HashMap<>();
-                        m.put("Uid", order.getUserId());
-                        m.put("Rid", order.getRestaurantId());
+                        m.put("uid", order.getUserId());
+                        m.put("rid", order.getRestaurantId());
                         m.put("Rname", order.getRestaurantName());
                         for (int i = 0; i < order.getUniqueItemNumbers(); i++) {
                             m.put(Integer.toString(i), order.getOrdered_Items().get(i).getOrderItemDesc());
                         }
+                        m.put("numbers",Integer.toString(order.getUniqueItemNumbers()));
 
                         return m;
                     }

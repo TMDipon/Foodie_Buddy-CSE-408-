@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".rider">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/riderpassword"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="5dp"
+        android:hint="Enter password:"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/rideremail"
+        android:hint="Enter email address:"
+        android:padding="10dp" />
+
+    <EditText
+        android:layout_height="60dp"
+        android:inputType="phone"
+        android:ems="10"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/riderphone"
+        android:hint="Enter Phone Number:"
+        android:layout_width="match_parent"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ridername"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:hint="Enter Rider Name:"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_height="60dp"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/ridernid"
+        android:hint="Enter NID Number:"
+        android:layout_width="match_parent"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/riderreg"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="500dp"
+        android:background="@color/colorPrimaryDark"
+        android:onClick="riderRegister"
+        android:padding="10dp"
+        android:text="Register"
+        android:textColor="@android:color/background_light"
+        android:textSize="13sp" />
+
+    <Spinner
+        android:id="@+id/rdistrict"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="380dp" />
+
+    <Spinner
+        android:id="@+id/rarea"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="380dp" />
+</RelativeLayout>

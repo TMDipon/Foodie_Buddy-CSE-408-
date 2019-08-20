@@ -15,6 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".riderLogin">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.riderLogin" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".rider">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.rider" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ChangeFoodPrice">
             <intent-filter>
                 <action android:name="com.example.foodie_buddy.ChangeFoodPrice" />

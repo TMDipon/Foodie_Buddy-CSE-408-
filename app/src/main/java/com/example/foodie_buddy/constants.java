@@ -19,7 +19,12 @@ public class constants {
     public static final String showfoods_URL = ROOT_URL+"foodByRestaurant";
     public static final String addFood_URL = ROOT_URL+"insertFood";
 
+    public static final String crider_URL = ROOT_URL+"createRider";
+    public static final String lrider_URL = ROOT_URL+"loginRider";
+
     public static HashMap<String, String[]> mp;
+    public static HashMap<String, String[]> areas;
+    public static HashMap<String, String[]> districts;
 
     public static void make()
     {
@@ -35,8 +40,18 @@ public class constants {
         mp.put("Pasta and Pizza",pizza_pasta);
         mp.put("Pizza",pizza_pasta);
         mp.put("Pasta",pizza_pasta);
-    }
 
+        areas = new HashMap<>();
+        String[] dhaka = {"Area","Banani","Banasree","Badda","Dhaka Cantonment","Dhanmondi","Gulshan","Kakrail","Khilgaon","Mirpur","Mohammadpur","Motijheel","New Paltan","Old Paltan","Tejgaon","Uttara"};
+        String[] ar = {"Area"};
+
+        areas.put("District",ar);
+        areas.put("Dhaka",dhaka);
+
+        districts = new HashMap<>();
+        String[] bd = {"District","Dhaka"};
+        districts.put("Bangladesh",bd);
+    }
 
 
 }
