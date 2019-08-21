@@ -21,6 +21,9 @@ public class constants {
 
     public static final String crider_URL = ROOT_URL+"createRider";
     public static final String lrider_URL = ROOT_URL+"loginRider";
+    public static final String searchOrder_URL = ROOT_URL+"searchOrders";
+    public static final String acceptOrder_URL = ROOT_URL+"acceptOrder";
+    public static final String rejectOrder_URL = ROOT_URL+"rejectOrder";
 
     public static HashMap<String, String[]> mp;
     public static HashMap<String, String[]> areas;

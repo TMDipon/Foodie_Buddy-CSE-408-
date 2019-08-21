@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class sharedRiderManager {
 
     private static sharedRiderManager instance;
@@ -20,6 +22,18 @@ public class sharedRiderManager {
     private static final String Rdistrict = "rdistrict";
     private static final String Online_stat = "ostat";//0->offline and 1->online
 
+    private static final String order_id = "oid";
+    private static final String user_lat = "ulat";
+    private static final String user_longi = "ulon";
+    private static final String res_name = "rname";
+    private static final String res_lat = "rlat";
+    private static final String res_longi = "rlon";
+    private static final String res_address = "raddress";
+    private static final String user_name = "uname";
+    private static final String user_phone = "uphone";
+    private static final String item_desc = "iDesc";
+
+
     private sharedRiderManager(Context context) {
         ctx = context;
     }
@@ -30,6 +44,21 @@ public class sharedRiderManager {
             instance = new sharedRiderManager(context);
         }
         return instance;
+    }
+
+    public String getAddress(String a, String b, String c, String d, String e, String f, String g) {
+        if (e.equalsIgnoreCase("null")) {
+            e = "";
+        } else {
+            e += ", ";
+        }
+        if (c.equalsIgnoreCase("null")) {
+            c = "";
+        } else {
+            c += ", ";
+        }
+
+        return "Level " + g + ", " + f + ", " + e + d + ", " + c + b + ", " + a;
     }
 
     public boolean riderLogin(String response)
@@ -66,6 +95,49 @@ public class sharedRiderManager {
         return true;
     }
 
+    public void saveOrder(String response)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        try
+        {
+            JSONObject j = new JSONObject(response);
+
+            //Saving restaurant credentials and user location from order description odesc
+            JSONObject odesc = j.getJSONObject("odesc");
+            e.putInt(order_id,odesc.getInt("id"));
+            e.putString(res_name,odesc.getString("name"));
+            e.putString(user_lat,Double.toString(odesc.getDouble("user_lati")));
+            e.putString(user_longi,Double.toString(odesc.getDouble("user_longi")));
+            e.putString(res_lat,Double.toString(odesc.getDouble("restaurant_lati")));
+            e.putString(res_longi,Double.toString(odesc.getDouble("restaurant_longi")));
+            String addr = getAddress(odesc.getString("district"),odesc.getString("area"),odesc.getString("Road_name"),odesc.getString("Road_no"),odesc.getString("House_name"),odesc.getString("House_no"),odesc.getString("Level"));
+            e.putString(res_address,addr);
+
+            //Saving user name and phone number of the user who has given the order
+            JSONObject udesc = j.getJSONObject("udesc");
+            e.putString(user_name,udesc.getString("name"));
+            e.putString(user_phone,udesc.getString("phone"));
+
+            //Saving the items inside order
+            JSONArray idesc = j.getJSONArray("idesc");
+            e.putString(item_desc,idesc.toString());
+
+            e.apply();
+        }
+        catch (JSONException x) {
+        }
+
+    }
+
+    public void setOnlineStatus(int x)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putInt(Online_stat,x);
+        e.apply();
+    }
+
     public boolean isRiderLoggedIn()
     {
         SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
@@ -75,5 +147,104 @@ public class sharedRiderManager {
         }
 
         return false;
+    }
+
+    public String getRiderName()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(Rname,null);
+    }
+
+    public int getRiderId()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getInt(Rid,-1);
+    }
+
+    public String getRiderPrefferedArea()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(Rarea,null);
+    }
+
+    public int getOnlineStat()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getInt(Online_stat,-1);
+    }
+
+    //Methods needed for order details showing ------------
+    public String getRestName()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(res_name,null);
+    }
+
+    public String getRestAddress()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(res_address,null);
+    }
+
+    public String getOrderId()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        int  tem = s.getInt(order_id,-1);
+        return Integer.toString(tem);
+    }
+
+    public ArrayList<String> getOrderItems()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(item_desc,null);
+        ArrayList<String> l1 = new ArrayList<String>();
+        String space = "       ";
+
+        try
+        {
+            JSONArray items = new JSONArray(tem);
+            for(int i=0; i < items.length(); i++) {
+                JSONObject k = items.getJSONObject(i);
+                Double price = k.getInt("amount")*k.getDouble("unit_price");
+                l1.add(Integer.toString(k.getInt("amount"))+"* "+k.getString("name")+space+"Price: "+Double.toString(price));
+            }
+
+        }
+        catch (JSONException x) {
+        }
+
+        return l1;
+    }
+
+    public double getTotalPrice()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(item_desc,null);
+        double totalPrice = 0.0;
+
+        try
+        {
+            JSONArray items = new JSONArray(tem);
+            for(int i=0; i < items.length(); i++) {
+                JSONObject k = items.getJSONObject(i);
+                Double price = k.getInt("amount")*k.getDouble("unit_price");
+                totalPrice += price;
+            }
+
+        }
+        catch (JSONException x) {
+        }
+        return totalPrice;
+    }
+
+
+    //For logging out
+    public boolean riderlogout()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.clear();
+        e.apply();
+        return true;
     }
 }

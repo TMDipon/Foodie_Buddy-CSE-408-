@@ -72,8 +72,8 @@ public class riderLogin extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), j.getString("info"), Toast.LENGTH_SHORT).show();
                             t1.getText().clear();
                             t2.getText().clear();
-                            //startActivity(new Intent(getApplicationContext(),userProfile.class));
-                            //finish();
+                            startActivity(new Intent(getApplicationContext(),riderProfile.class));
+                            finish();
                         }
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();

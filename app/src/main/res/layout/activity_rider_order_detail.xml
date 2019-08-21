@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".riderOrderDetail">
+
+    <TextView
+        android:id="@+id/odrfromRest"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#555445"
+        android:paddingLeft="50dp"
+        android:paddingTop="25dp"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/restaddr1"
+        android:layout_width="210dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="105dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="12dp"
+        android:text="Restaurant Address"
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/restaddr2"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="170dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="5dp"
+        android:background="#eeeeee"
+        android:textColor="@android:color/background_dark"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/odrItemsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="245dp"
+        android:paddingLeft="140sp"
+        android:paddingTop="10sp"
+        android:text="Order Description"
+        android:textSize="19sp" />
+
+    <ListView
+        android:id="@+id/odritems"
+        android:layout_width="390dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="295dp"
+        android:dividerHeight="5dp" />
+
+    <TextView
+        android:id="@+id/odrtot"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="510dp"
+        android:background="#ffefff"
+        android:paddingLeft="20sp"
+        android:paddingTop="15sp"
+        android:text="Total"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/odrtotval"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="510dp"
+        android:background="#ffefff"
+        android:paddingLeft="80sp"
+        android:paddingTop="15sp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/reject"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="570dp"
+        android:background="#ff0000"
+        android:onClick="reject"
+        android:text="Reject"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/accept"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="208dp"
+        android:layout_marginTop="570dp"
+        android:background="#00ff33"
+        android:onClick="accept"
+        android:text="Accept"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, ownerProfile.class));
         }
+        else if(sharedRiderManager.getInstance(this).isRiderLoggedIn())
+        {
+            finish();
+            startActivity(new Intent(this, riderProfile.class));
+        }
 
         getSupportActionBar().hide();
     }
