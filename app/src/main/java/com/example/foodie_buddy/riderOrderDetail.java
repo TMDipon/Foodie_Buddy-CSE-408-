@@ -80,14 +80,15 @@ public class riderOrderDetail extends AppCompatActivity {
     public void accept(View v)
     {
         mCountDownTimer.cancel();
+        sharedRiderManager.getInstance(getApplicationContext()).setOnlineStatus(0);
         Toast.makeText(getApplicationContext(), "You accepted the order", Toast.LENGTH_SHORT).show();
 
         StringRequest s = new StringRequest(Request.Method.POST, constants.acceptOrder_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response)
             {
-                //finish();
-                //startActivity(new Intent(getApplicationContext(),riderProfile.class));
+                finish();
+                startActivity(new Intent(getApplicationContext(),riderReachRest.class));
             }
         }, new Response.ErrorListener() {
             @Override

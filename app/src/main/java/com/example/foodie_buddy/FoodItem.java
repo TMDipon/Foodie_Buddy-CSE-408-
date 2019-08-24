@@ -1,3 +1,4 @@
+    
 package com.example.foodie_buddy;
 
 public class FoodItem {

@@ -21,6 +21,10 @@ public class sharedRiderManager {
     private static final String Rarea = "rarea";
     private static final String Rdistrict = "rdistrict";
     private static final String Online_stat = "ostat";//0->offline and 1->online
+    private static final String rider_init_lat = "rilat";
+    private static final String rider_init_longi = "rilon";
+    private static final String rider_cur_lat = "rclat";
+    private static final String rider_cur_longi = "rclon";
 
     private static final String order_id = "oid";
     private static final String user_lat = "ulat";
@@ -94,6 +98,84 @@ public class sharedRiderManager {
 
         return true;
     }
+
+    //save rider location and getting locations
+    public void saveRiderInitLocation(double lati, double longi)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putString(rider_init_lat,Double.toString(lati));
+        e.putString(rider_init_longi,Double.toString(longi));
+        e.apply();
+    }
+
+    public void saveRiderCurrentLocation(double lati, double longi)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putString(rider_cur_lat,Double.toString(lati));
+        e.putString(rider_cur_longi,Double.toString(longi));
+        e.apply();
+    }
+
+    public Double getriLongitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(rider_init_longi,"99.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getriLatitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(rider_init_lat,"200.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getrcLongitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(rider_cur_longi,"99.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getrcLatitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(rider_cur_lat,"200.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getuserLongitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(user_longi,"99.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getuserLatitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(user_lat,"200.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getrestLongitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(res_longi,"99.9999");
+        return Double.parseDouble(tem);
+    }
+
+    public Double getrestLatitude()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        String tem = s.getString(res_lat,"200.9999");
+        return Double.parseDouble(tem);
+    }
+    //-------------------------------------------
+
+
 
     public void saveOrder(String response)
     {

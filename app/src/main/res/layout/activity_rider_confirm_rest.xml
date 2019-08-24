@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".riderConfirmRest">
+
+    <TextView
+        android:id="@+id/makeorderLabel"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#555445"
+        android:paddingLeft="32dp"
+        android:paddingTop="27dp"
+        android:text="Confirm Order with Restaurant"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/restphnLabel"
+        android:layout_width="210dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:background="#eeecdd"
+        android:text="Restaurant Phone Number: "
+        android:textColor="@android:color/background_dark"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/restphnnum"
+        android:layout_width="180dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="100dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="4dp"
+        android:background="#eeecdd"
+        android:textColor="@android:color/background_dark"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/makeCall"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="180dp"
+        android:background="#ddfe1d"
+        android:text="Call"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <ListView
+        android:id="@+id/odritems1"
+        android:layout_width="390dp"
+        android:layout_height="210dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="260dp"
+        android:dividerHeight="6dp" />
+
+</RelativeLayout>

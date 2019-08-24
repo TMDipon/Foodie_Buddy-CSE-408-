@@ -90,9 +90,9 @@ public class userProfile extends AppCompatActivity {
 
     public ArrayList<String> restaurants;
 
-    public LocationManager locationManager;
+    private LocationManager locationManager;
 
-    public LocationListener locationListener;
+    private LocationListener locationListener;
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
