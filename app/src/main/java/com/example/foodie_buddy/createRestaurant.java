@@ -37,7 +37,7 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
     private String ar="nil";
 
     public Spinner spin_type,spin_stime,spin_etime,spin_district,spin_area;
-    public EditText t1,t2,t3,t4,t5,t6;
+    public EditText t1,t2,t3,t4,t5,t6,t7;
     public String type;
     public int rid;
 
@@ -157,8 +157,9 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
         t4 = (EditText)findViewById(R.id.hsno);
         t5 = (EditText)findViewById(R.id.hsname);
         t6 = (EditText)findViewById(R.id.level);
+        t7 = (EditText)findViewById(R.id.resphnno);
 
-        final String s1,s2,s3,s4,s5,s6;
+        final String s1,s2,s3,s4,s5,s6,s8;
         if(t3.getText().toString().trim().isEmpty())
         {
             s3 = "null";
@@ -181,14 +182,29 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
         s2 = t2.getText().toString();
         s4 = t4.getText().toString();
         s6 = t6.getText().toString();
+        s8 = t7.getText().toString();
+
+        String temp = "";
+
+        if(!s8.isEmpty()){
+            temp = s8.substring(0,3);
+        }
 
         final String tem = Integer.toString(sharedOwnerManager.getInstance(this).getOwnerId());
 
         final ProgressDialog p = new ProgressDialog(this);
 
-        if(s1.isEmpty() || s2.isEmpty() || s4.isEmpty() || s6.isEmpty() || typ.equals("nil") || st.equals("nil") || et.equals("nil") || dis.equals("nil") || ar.equals("nil"))
+        if(s1.isEmpty() || s2.isEmpty() || s4.isEmpty() || s6.isEmpty() || s8.isEmpty() || typ.equals("nil") || st.equals("nil") || et.equals("nil") || dis.equals("nil") || ar.equals("nil"))
         {
             Toast.makeText(getApplicationContext(), "Provide or select necessary information for creating restaurant", Toast.LENGTH_LONG).show();
+        }
+        else if(s8.length() != 11)
+        {
+            Toast.makeText(getApplicationContext(), "Wrong phone number length", Toast.LENGTH_LONG).show();
+        }
+        else if(!(temp.equals("013") || temp.equals("014") || temp.equals("015") || temp.equals("016") || temp.equals("017") || temp.equals("018") || temp.equals("019")))
+        {
+            Toast.makeText(getApplicationContext(), "Invalid phone number", Toast.LENGTH_LONG).show();
         }
         else {
 
@@ -262,6 +278,7 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                     m.put("House_name",s5);
                     m.put("House_no",s4);
                     m.put("Level",s6);
+                    m.put("phone",s8);
                     return m;
                 }
             };

@@ -13,7 +13,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="#555445"
-        android:paddingLeft="32dp"
+        android:paddingLeft="25dp"
         android:paddingTop="27dp"
         android:text="Confirm Order with Restaurant"
         android:textColor="@android:color/background_light"
@@ -22,13 +22,13 @@
 
     <TextView
         android:id="@+id/restphnLabel"
-        android:layout_width="210dp"
+        android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="7dp"
         android:layout_marginTop="100dp"
+        android:background="#eeecdd"
         android:paddingLeft="3dp"
         android:paddingTop="3dp"
-        android:background="#eeecdd"
         android:text="Restaurant Phone Number: "
         android:textColor="@android:color/background_dark"
         android:textSize="22sp"
@@ -37,13 +37,13 @@
 
     <TextView
         android:id="@+id/restphnnum"
-        android:layout_width="180dp"
+        android:layout_width="200dp"
         android:layout_height="65dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="210dp"
         android:layout_marginTop="100dp"
-        android:paddingLeft="5dp"
-        android:paddingTop="4dp"
         android:background="#eeecdd"
+        android:paddingLeft="32dp"
+        android:paddingTop="16dp"
         android:textColor="@android:color/background_dark"
         android:textSize="21sp"
         android:textStyle="bold" />
@@ -53,10 +53,11 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="135dp"
         android:layout_marginTop="180dp"
         android:background="#ddfe1d"
         android:text="Call"
+        android:onClick="makeCall"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -64,9 +65,20 @@
     <ListView
         android:id="@+id/odritems1"
         android:layout_width="390dp"
-        android:layout_height="210dp"
+        android:layout_height="220dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="270dp"
         android:dividerHeight="6dp" />
+
+    <Button
+        android:id="@+id/orderConfirmed"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="565dp"
+        android:background="#00ff44"
+        android:text="Order Confirmed"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

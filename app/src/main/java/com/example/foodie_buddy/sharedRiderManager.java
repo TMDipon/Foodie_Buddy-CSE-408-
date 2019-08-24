@@ -33,6 +33,7 @@ public class sharedRiderManager {
     private static final String res_lat = "rlat";
     private static final String res_longi = "rlon";
     private static final String res_address = "raddress";
+    private static final String res_phone = "rphone";
     private static final String user_name = "uname";
     private static final String user_phone = "uphone";
     private static final String item_desc = "iDesc";
@@ -195,6 +196,7 @@ public class sharedRiderManager {
             e.putString(res_longi,Double.toString(odesc.getDouble("restaurant_longi")));
             String addr = getAddress(odesc.getString("district"),odesc.getString("area"),odesc.getString("Road_name"),odesc.getString("Road_no"),odesc.getString("House_name"),odesc.getString("House_no"),odesc.getString("Level"));
             e.putString(res_address,addr);
+            e.putString(res_phone,odesc.getString("phone"));
 
             //Saving user name and phone number of the user who has given the order
             JSONObject udesc = j.getJSONObject("udesc");
@@ -273,6 +275,12 @@ public class sharedRiderManager {
         SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
         int  tem = s.getInt(order_id,-1);
         return Integer.toString(tem);
+    }
+
+    public String getRestPhone()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(res_phone,null);
     }
 
     public ArrayList<String> getOrderItems()

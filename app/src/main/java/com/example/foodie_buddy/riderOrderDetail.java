@@ -88,7 +88,7 @@ public class riderOrderDetail extends AppCompatActivity {
             public void onResponse(String response)
             {
                 finish();
-                startActivity(new Intent(getApplicationContext(),riderReachRest.class));
+                startActivity(new Intent(getApplicationContext(),riderConfirmRest.class));
             }
         }, new Response.ErrorListener() {
             @Override

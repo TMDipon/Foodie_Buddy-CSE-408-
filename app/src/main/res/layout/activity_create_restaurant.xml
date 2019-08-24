@@ -108,16 +108,27 @@
 
     <EditText
         android:id="@+id/level"
-        android:layout_width="140dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="330dp"
         android:ems="10"
         android:hint="Enter level:"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/resphnno"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="330dp"
+        android:ems="10"
+        android:hint="Enter phone number: "
+        android:inputType="textPersonName" />
+
     <Button
         android:id="@+id/crRes"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="160dp"
         android:layout_height="80dp"
         android:layout_marginLeft="120dp"
