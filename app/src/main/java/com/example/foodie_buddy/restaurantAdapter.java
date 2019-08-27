@@ -98,6 +98,7 @@ public class restaurantAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 sharedPrefManager.getInstance(parent.getContext()).saveCurrentRestaurant(list.get(position).getName(),list.get(position).getId());
+                sharedPrefManager.getInstance(parent.getContext()).saveOrderResLocation(list.get(position).getLat(),list.get(position).getLng());
                 showFoods(parent);
                 notifyDataSetChanged();
             }

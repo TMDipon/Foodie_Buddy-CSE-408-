@@ -19,6 +19,8 @@ public class constants {
     public static final String showfoods_URL = ROOT_URL+"foodByRestaurant";
     public static final String addFood_URL = ROOT_URL+"insertFood";
 
+    public static final String placeOrder_URL = ROOT_URL+"placeOrder";
+
     public static final String crider_URL = ROOT_URL+"createRider";
     public static final String lrider_URL = ROOT_URL+"loginRider";
     public static final String searchOrder_URL = ROOT_URL+"searchOrders";

@@ -125,7 +125,6 @@ public class userProfile extends AppCompatActivity {
 
             @Override
             public void onLocationChanged(Location location) {
-                //Log.i("Location", location.toString());
                 sharedPrefManager.getInstance(getApplicationContext()).saveLocation(location.getLatitude(), location.getLongitude());
             }
 
@@ -217,6 +216,7 @@ public class userProfile extends AppCompatActivity {
                     Location first = new Location("");
                     first.setLatitude(sharedPrefManager.getInstance(getApplicationContext()).getLatitude());
                     first.setLongitude(sharedPrefManager.getInstance(getApplicationContext()).getLongitude());
+                    Location second = new Location("");
 
                     for(int i=0;i<J.length();i++)
                     {
@@ -231,7 +231,6 @@ public class userProfile extends AppCompatActivity {
                         {
                             if(k.getString("type").equals(t))
                             {
-                                Location second = new Location("");
                                 second.setLatitude(ll.latitude);
                                 second.setLongitude(ll.longitude);
 
@@ -239,7 +238,7 @@ public class userProfile extends AppCompatActivity {
                                 //Toast.makeText(userProfile.this,k.getString("name")+" "+Double.toString(distanceInMeters), Toast.LENGTH_SHORT).show();
                                 if(distanceInMeters <= 3.00000)
                                 {
-                                    Restaurants r = new Restaurants(k.getInt("id"),k.getString("name"),k.getString("type"),k.getString("starts_at"),k.getString("closes_at"));
+                                    Restaurants r = new Restaurants(k.getInt("id"),k.getString("name"),k.getString("type"),k.getString("starts_at"),k.getString("closes_at"),ll.latitude,ll.longitude);
                                     rests.add(r);
                                 }
                             }

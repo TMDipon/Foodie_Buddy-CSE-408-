@@ -122,10 +122,12 @@ public class orderBox extends AppCompatActivity {
         giveOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StringRequest s = new StringRequest(Request.Method.POST, constants.lowner_URL, new Response.Listener<String>() {
+                StringRequest s = new StringRequest(Request.Method.POST, constants.placeOrder_URL, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Toast.makeText(orderBox.this, response, Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(getApplicationContext(),userProfile.class));
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -138,7 +140,10 @@ public class orderBox extends AppCompatActivity {
                         Map<String, String> m = new HashMap<>();
                         m.put("uid", order.getUserId());
                         m.put("rid", order.getRestaurantId());
-                        m.put("Rname", order.getRestaurantName());
+                        m.put("ulati",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLatitude()));
+                        m.put("ulongi",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLongitude()));
+                        m.put("reslati",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLatitude()));
+                        m.put("reslongi",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLongitude()));
                         for (int i = 0; i < order.getUniqueItemNumbers(); i++) {
                             m.put(Integer.toString(i), order.getOrdered_Items().get(i).getOrderItemDesc());
                         }
@@ -150,6 +155,8 @@ public class orderBox extends AppCompatActivity {
 
                 RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(s);
             }
+
+
 
         });
 

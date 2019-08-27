@@ -283,6 +283,12 @@ public class sharedRiderManager {
         return s.getString(res_phone,null);
     }
 
+    public String getUserPhone()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getString(user_phone,null);
+    }
+
     public ArrayList<String> getOrderItems()
     {
         SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);

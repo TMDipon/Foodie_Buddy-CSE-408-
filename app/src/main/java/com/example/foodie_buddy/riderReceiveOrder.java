@@ -28,7 +28,8 @@ public class riderReceiveOrder extends AppCompatActivity {
         if(oad.allChecked())
         {
             //start new activity to reach the delivery location
-            Toast.makeText(this, "Proceed to deliver the order", Toast.LENGTH_LONG).show();
+            finish();
+            startActivity(new Intent(getApplicationContext(),riderReachUser.class));
         }
         else
         {

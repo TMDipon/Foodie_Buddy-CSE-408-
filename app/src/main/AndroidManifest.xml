@@ -16,6 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".riderReachUser">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.riderReachUser" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".riderReceiveOrder">
             <intent-filter>
                 <action android:name="com.example.foodie_buddy.riderReceiveOrder" />

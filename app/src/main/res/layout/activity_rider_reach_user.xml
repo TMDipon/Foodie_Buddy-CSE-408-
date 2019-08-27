@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".riderReachUser">
+
+    <fragment
+        android:id="@+id/mapridtouser"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/userPhn"
+        android:text="Call Customer"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:onClick="makeCallUser"
+        android:background="#ccff5d"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/userReached"
+        android:text="Reached Customer"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:onClick="reachedUser"
+        android:background="#ddfe2f"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>
