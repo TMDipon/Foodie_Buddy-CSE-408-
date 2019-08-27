@@ -77,6 +77,7 @@
         android:layout_height="70dp"
         android:layout_marginTop="565dp"
         android:background="#00ff44"
+        android:onClick="confirmed"
         android:text="Order Confirmed"
         android:textSize="20sp"
         android:textStyle="bold" />

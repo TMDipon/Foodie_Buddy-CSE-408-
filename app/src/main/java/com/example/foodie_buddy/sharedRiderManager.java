@@ -296,7 +296,7 @@ public class sharedRiderManager {
             for(int i=0; i < items.length(); i++) {
                 JSONObject k = items.getJSONObject(i);
                 Double price = k.getInt("amount")*k.getDouble("unit_price");
-                l1.add(Integer.toString(k.getInt("amount"))+"* "+k.getString("name")+space+"Price: "+Double.toString(price));
+                l1.add(Integer.toString(k.getInt("amount"))+"*   "+k.getString("name")+"\n"+"Price: "+Double.toString(price));
             }
 
         }

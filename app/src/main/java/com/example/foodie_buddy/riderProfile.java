@@ -183,10 +183,6 @@ public class riderProfile extends AppCompatActivity {
         }
 
 
-        double lat = sharedRiderManager.getInstance(getApplicationContext()).getrcLatitude();
-        double lon = sharedRiderManager.getInstance(getApplicationContext()).getrcLongitude();
-        sharedRiderManager.getInstance(getApplicationContext()).saveRiderInitLocation(lat,lon);
-
         //Checking Online_Status to look for orders
         int condn = sharedRiderManager.getInstance(getApplicationContext()).getOnlineStat();
         if(condn == 0)

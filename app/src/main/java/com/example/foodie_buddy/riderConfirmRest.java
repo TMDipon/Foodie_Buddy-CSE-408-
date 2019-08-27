@@ -45,6 +45,12 @@ public class riderConfirmRest extends AppCompatActivity {
         dialContactPhone(sharedRiderManager.getInstance(getApplicationContext()).getRestPhone());
     }
 
+    public void confirmed(View v)
+    {
+        finish();
+        startActivity(new Intent(getApplicationContext(),riderReachRest.class));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

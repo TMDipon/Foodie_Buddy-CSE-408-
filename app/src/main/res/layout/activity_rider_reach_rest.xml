@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:background="#ddfe2f"
+        android:onClick="reached"
         android:textSize="20sp"
         android:textStyle="bold"/>
 
