@@ -21,7 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class riderReceiveOrder extends AppCompatActivity {
+public class riderReceivePayment extends AppCompatActivity {
 
     private oitemadapter oad;
     private ListView lv;
@@ -29,14 +29,14 @@ public class riderReceiveOrder extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Please receive the order\nThen reach the delivery location", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Please receive your payment first\nThen look for another order if you want", Toast.LENGTH_LONG).show();
     }
 
-    public void allItemsTaken(View v)
+    public void paymentTaken(View v)
     {
         if(oad.allChecked())
         {
-            //start new activity to reach the delivery location
+            //start new activity to look for further orders
             StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response)
@@ -53,36 +53,38 @@ public class riderReceiveOrder extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
                     m.put("oid", sharedRiderManager.getInstance(getApplicationContext()).getOrderId());
-                    m.put("order_stat","Order Received from Restaurant, On the way");
+                    m.put("order_stat","Order Delivered, Task Complete");
                     return m;
                 }
             };
 
             RequestHandler.getInstance(this).addToRequestQueue(s);
             finish();
-            startActivity(new Intent(getApplicationContext(),riderReachUser.class));
+            startActivity(new Intent(getApplicationContext(),riderProfile.class));
+            Toast.makeText(this, "Order deliver completed", Toast.LENGTH_LONG).show();
         }
         else
         {
-            Toast.makeText(this, "Please check the items to be taken\nThen proceed to the next task", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please deliver all of the items first and take your payment", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rider_receive_order);
+        setContentView(R.layout.activity_rider_receive_payment);
 
-        lv = (ListView)findViewById(R.id.odritems2);
-        oad = new oitemadapter(sharedRiderManager.getInstance(getApplicationContext()).getOrderItems(),getApplicationContext(),0);
+        lv = (ListView)findViewById(R.id.odritems3);
+        oad = new oitemadapter(sharedRiderManager.getInstance(getApplicationContext()).getOrderItems(),getApplicationContext(),1);
         lv.setAdapter(oad);
 
-        tv = (TextView)findViewById(R.id.odrpayval);
+        tv = (TextView)findViewById(R.id.odrpayval2);
 
         double subtotal = sharedRiderManager.getInstance(getApplicationContext()).getTotalPrice();
         double vat = subtotal * 0.15;
+        double dfee = 60.0;
 
-        double total = subtotal + vat;
+        double total = subtotal + vat + dfee;
         tv.setText("BDT: "+Double.toString(Math.ceil(total)));
     }
 

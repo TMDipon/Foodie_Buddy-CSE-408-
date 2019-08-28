@@ -20,54 +20,26 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/restphnLabel"
-        android:layout_width="200dp"
-        android:layout_height="65dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="100dp"
-        android:background="#eeecdd"
-        android:paddingLeft="3dp"
-        android:paddingTop="3dp"
-        android:text="Restaurant Phone Number: "
-        android:textColor="@android:color/background_dark"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/restphnnum"
-        android:layout_width="200dp"
-        android:layout_height="65dp"
-        android:layout_marginLeft="210dp"
-        android:layout_marginTop="100dp"
-        android:background="#eeecdd"
-        android:paddingLeft="32dp"
-        android:paddingTop="16dp"
-        android:textColor="@android:color/background_dark"
-        android:textSize="21sp"
-        android:textStyle="bold" />
 
     <Button
         android:id="@+id/makeCall"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="180dp"
+        style="@android:style/Widget.DeviceDefault.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="120dp"
         android:background="#ddfe1d"
-        android:text="Call"
         android:onClick="makeCall"
-        android:textSize="20sp"
+        android:text="Call Restaurant"
+        android:textSize="23sp"
         android:textStyle="bold" />
 
 
     <ListView
         android:id="@+id/odritems1"
         android:layout_width="390dp"
-        android:layout_height="220dp"
+        android:layout_height="250dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="240dp"
         android:dividerHeight="6dp" />
 
     <Button
@@ -79,7 +51,7 @@
         android:background="#00ff44"
         android:onClick="confirmed"
         android:text="Order Confirmed"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

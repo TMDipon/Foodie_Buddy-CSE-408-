@@ -16,6 +16,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -26,6 +31,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class riderReachRest extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback{
 
@@ -54,6 +62,28 @@ public class riderReachRest extends AppCompatActivity implements OnMapReadyCallb
         double distance = first.distanceTo(second);
         if(distance < 20.0000)
         {
+            StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response)
+                {
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> m = new HashMap<>();
+                    m.put("oid", sharedRiderManager.getInstance(getApplicationContext()).getOrderId());
+                    m.put("order_stat","Reached Restaurant");
+                    return m;
+                }
+            };
+
+            RequestHandler.getInstance(this).addToRequestQueue(s);
             finish();
             startActivity(new Intent(getApplicationContext(),riderReceiveOrder.class));
         }

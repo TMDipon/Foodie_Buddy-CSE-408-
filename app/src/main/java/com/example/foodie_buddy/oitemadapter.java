@@ -27,10 +27,12 @@ public class oitemadapter extends BaseAdapter implements ListAdapter {
     private ArrayList<String> list = new ArrayList<String>();
     private final int[] list1;
     private Context context;
+    private int stat;
 
-    public oitemadapter(ArrayList<String> list, Context context) {
+    public oitemadapter(ArrayList<String> list, Context context, int x) {
         this.list = list;
         this.context = context;
+        this.stat = x;
         list1 = new int[list.size()];
         for(int i=0;i<list.size();i++)
         {
@@ -82,6 +84,10 @@ public class oitemadapter extends BaseAdapter implements ListAdapter {
         itemDetail.setText(list.get(position));
 
         CheckBox ch = (CheckBox)view.findViewById(R.id.checkPicked);
+        if(stat == 1)
+        {
+            ch.setText("Received");
+        }
 
         ch.setOnClickListener(
                 new View.OnClickListener() {

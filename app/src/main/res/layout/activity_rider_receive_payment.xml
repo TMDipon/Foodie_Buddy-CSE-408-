@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".riderReceivePayment">
+
+    <TextView
+        android:id="@+id/deliverOrderLabel"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#555445"
+        android:paddingLeft="55dp"
+        android:paddingTop="27dp"
+        android:text="Deliver Order to Customer"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <ListView
+        android:id="@+id/odritems3"
+        android:layout_width="390dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="150dp"
+        android:dividerHeight="6dp" />
+
+    <TextView
+        android:id="@+id/odrpay2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="450dp"
+        android:background="#ffefff"
+        android:paddingLeft="25sp"
+        android:paddingTop="12sp"
+        android:text="Amount to receive : "
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/odrpayval2"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="450dp"
+        android:background="#ffefff"
+        android:paddingLeft="80sp"
+        android:paddingTop="12sp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/paymentReceived"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="575dp"
+        android:background="#00ff55"
+        android:onClick="paymentTaken"
+        android:text="Payment Received"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

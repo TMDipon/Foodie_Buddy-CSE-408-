@@ -22,12 +22,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class riderConfirmRest extends AppCompatActivity {
-    private TextView tv1;
     private ListView x;
     private ArrayList<String> l1;
 
@@ -47,17 +49,37 @@ public class riderConfirmRest extends AppCompatActivity {
 
     public void confirmed(View v)
     {
+        StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response)
+            {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> m = new HashMap<>();
+                m.put("oid", sharedRiderManager.getInstance(getApplicationContext()).getOrderId());
+                m.put("order_stat","Order Confirmed with Restaurant");
+                return m;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(s);
         finish();
         startActivity(new Intent(getApplicationContext(),riderReachRest.class));
+        Toast.makeText(this, "Order confirmed with restaurant", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rider_confirm_rest);
-
-        tv1 = (TextView)findViewById(R.id.restphnnum);
-        tv1.setText(sharedRiderManager.getInstance(getApplicationContext()).getRestPhone());
 
         x = (ListView)findViewById(R.id.odritems1);
         l1 = sharedRiderManager.getInstance(getApplicationContext()).getOrderItems();

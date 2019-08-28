@@ -26,6 +26,7 @@ public class constants {
     public static final String searchOrder_URL = ROOT_URL+"searchOrders";
     public static final String acceptOrder_URL = ROOT_URL+"acceptOrder";
     public static final String rejectOrder_URL = ROOT_URL+"rejectOrder";
+    public static final String updateOrderStatus_URL = ROOT_URL+"updateOrderStatus";
 
     public static HashMap<String, String[]> mp;
     public static HashMap<String, String[]> areas;
