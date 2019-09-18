@@ -15,7 +15,7 @@
         app:tabBackground="@color/design_default_color_primary"
         app:tabGravity="center"
         app:tabMode="scrollable"
-        app:tabTextColor="@android:color/holo_blue_light">
+        app:tabTextColor="#6FCBF5">
         android:background="@color/colorPrimary"
 
     </com.google.android.material.tabs.TabLayout>

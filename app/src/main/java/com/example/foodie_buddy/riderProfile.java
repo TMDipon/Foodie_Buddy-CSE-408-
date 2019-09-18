@@ -113,6 +113,7 @@ public class riderProfile extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
                     m.put("area", sharedRiderManager.getInstance(getApplicationContext()).getRiderPrefferedArea());
+                    m.put("id",Integer.toString(sharedRiderManager.getInstance(getApplicationContext()).getRiderId()));
                     return m;
                 }
             };
@@ -238,6 +239,7 @@ public class riderProfile extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
                     m.put("area", sharedRiderManager.getInstance(getApplicationContext()).getRiderPrefferedArea());
+                    m.put("id",Integer.toString(sharedRiderManager.getInstance(getApplicationContext()).getRiderId()));
                     return m;
                 }
             };

@@ -16,7 +16,49 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".riderReceivePayment"></activity>
+        <activity android:name=".modifyFoodDescription">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.modifyFoodDescription" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".restModifyOptions">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.restModifyOptions" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".foodConfirmed">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.foodConfirmed" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".currentOrders">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.currentOrders" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ownerLogin">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.ownerLogin" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".mushitanjimm">
+            <intent-filter>
+                <action android:name="com.example.foodie_buddy.mushitanjim" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".riderReceivePayment" />
         <activity android:name=".riderReachUser">
             <intent-filter>
                 <action android:name="com.example.foodie_buddy.riderReachUser" />
@@ -156,13 +198,6 @@
         <activity android:name=".ownerProfile">
             <intent-filter>
                 <action android:name="com.example.foodie_buddy.ownerProfile" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ownerLogin">
-            <intent-filter>
-                <action android:name="com.example.foodie_buddy.ownerLogin" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

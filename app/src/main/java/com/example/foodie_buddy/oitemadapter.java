@@ -55,6 +55,7 @@ public class oitemadapter extends BaseAdapter implements ListAdapter {
         return pos;
     }
 
+
     public boolean allChecked()
     {
         boolean flag = true;
@@ -69,6 +70,7 @@ public class oitemadapter extends BaseAdapter implements ListAdapter {
 
         return  flag;
     }
+
 
 
     @Override
@@ -86,7 +88,7 @@ public class oitemadapter extends BaseAdapter implements ListAdapter {
         CheckBox ch = (CheckBox)view.findViewById(R.id.checkPicked);
         if(stat == 1)
         {
-            ch.setText("Received");
+            ch.setVisibility(View.GONE);
         }
 
         ch.setOnClickListener(

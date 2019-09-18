@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,15 +24,56 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class createRestaurant extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    public String getAddress(String a, String b, String c, String d, String e, String f) {
+        if (e.equalsIgnoreCase("null")) {
+            e = "";
+        } else {
+            e += ", ";
+        }
+        if (c.equalsIgnoreCase("null")) {
+            c = "";
+        } else {
+            c += ", ";
+        }
+
+        return f + ", " + e + d + ", " + c + b + ", " + a;
+    }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+
+            Address location = address.get(0);
+            p1 = new LatLng(location.getLatitude(), location.getLongitude());
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        return p1;
+    }
 
     private String typ="nil";
     private String st="nil";
@@ -216,7 +261,6 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                 public void onResponse(String response) {
                     p.dismiss();
 
-
                     try {
                         JSONObject j = new JSONObject(response);
                         if(!j.getBoolean("estat"))
@@ -229,7 +273,7 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                                 type = k.getString("type");
                             }
                             sharedOwnerManager.getInstance(getApplicationContext()).current_Rest(rid,type);
-                            Toast.makeText(getApplicationContext(), j.getString("info")+sharedOwnerManager.getInstance(getApplicationContext()).getCurrentResType(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), j.getString("info"), Toast.LENGTH_SHORT).show();
                             spin_type.setSelection(0);
                             spin_stime.setSelection(0);
                             spin_etime.setSelection(0);
@@ -246,7 +290,9 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                             t4.getText().clear();
                             t5.getText().clear();
                             t6.getText().clear();
+                            t7.getText().clear();
                             startActivity(new Intent(getApplicationContext(),FoodInsert.class));
+                            finish();
                         }
                         else
                         {
@@ -266,6 +312,9 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
+                    String address = getAddress(dis,ar,s3,s2,s5,s4);
+                    Log.i("Address",address);
+                    final LatLng ll = getLocationFromAddress(getApplicationContext(),address);
                     m.put("name", s1);
                     m.put("type", typ);
                     m.put("owner_id", tem);
@@ -279,6 +328,8 @@ public class createRestaurant extends AppCompatActivity implements AdapterView.O
                     m.put("House_no",s4);
                     m.put("Level",s6);
                     m.put("phone",s8);
+                    m.put("Latitude",Double.toString(ll.latitude));
+                    m.put("Longitude",Double.toString(ll.longitude));
                     return m;
                 }
             };

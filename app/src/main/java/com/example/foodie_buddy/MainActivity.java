@@ -22,22 +22,35 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 3)
+        {
+            finish();
+        }
+    }
+
     public void User(View v)
     {
         Intent i = new Intent("com.example.foodie_buddy.loginActivity");
-        startActivity(i);
+        startActivityForResult(i, 3);
+        //startActivity(i);
     }
 
     public void Owner(View v)
     {
         Intent i = new Intent("com.example.foodie_buddy.ownerLogin");
-        startActivity(i);
+        startActivityForResult(i, 3);
+        //startActivity(i);
     }
 
     public void Rider(View v)
     {
-        Intent i = new Intent("com.example.foodie_buddy.riderLogin");
-        startActivity(i);
+        //Intent i = new Intent("com.example.foodie_buddy.riderLogin");
+        //startActivity(i);
+        Intent i = new Intent(getApplicationContext(),riderLogin.class);
+        startActivityForResult(i, 3);
     }
 
     @Override

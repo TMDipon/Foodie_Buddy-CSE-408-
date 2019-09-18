@@ -60,7 +60,8 @@ public class riderReachRest extends AppCompatActivity implements OnMapReadyCallb
 
         Log.i("Location: ",first.toString()+" "+second.toString());
         double distance = first.distanceTo(second);
-        if(distance < 20.0000)
+        //if(distance < 20.0000)
+        if(1==1)
         {
             StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
                 @Override
@@ -89,7 +90,7 @@ public class riderReachRest extends AppCompatActivity implements OnMapReadyCallb
         }
         else
         {
-            Toast.makeText(this, Double.toString(distance)+" Yoy are not in the restaurant\nReach there and then proceed to take the order", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Yoy are not in the restaurant\n"+Double.toString(Math.round(distance))+" Meters away"+"\nReach there and then proceed to take the order", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -146,7 +147,7 @@ public class riderReachRest extends AppCompatActivity implements OnMapReadyCallb
         mMap.addMarker(place2);
         CameraPosition googlePlex = CameraPosition.builder()
                 .target(new LatLng(sharedRiderManager.getInstance(getApplicationContext()).getriLatitude(),sharedRiderManager.getInstance(getApplicationContext()).getriLongitude()))
-                .zoom(17)
+                .zoom(15)
                 .bearing(0)
                 .tilt(45)
                 .build();

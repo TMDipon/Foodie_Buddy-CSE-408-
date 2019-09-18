@@ -109,7 +109,6 @@ public class riderOrderDetail extends AppCompatActivity {
 
     }
 
-
     public void reject(View v)
     {
         mCountDownTimer.cancel();
@@ -131,6 +130,7 @@ public class riderOrderDetail extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> m = new HashMap<>();
                 m.put("oid", sharedRiderManager.getInstance(getApplicationContext()).getOrderId());
+                m.put("rid",Integer.toString(sharedRiderManager.getInstance(getApplicationContext()).getRiderId()));
                 return m;
             }
         };

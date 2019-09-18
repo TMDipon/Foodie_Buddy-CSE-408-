@@ -23,6 +23,11 @@ public class OrderItem implements Serializable {
         return Integer.toString(FoodId)+"_"+Integer.toString(Amount);
     }
 
+    public String getItemDesc()
+    {
+        return Integer.toString(Amount)+"* "+FoodName+"\n  BDT "+Double.toString(this.Amount*unitPrice);
+    }
+
     public void addItem()
     {
         this.Amount++;

@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modifiableRestaurants">
+    tools:context=".modifiableRestaurants"
+    android:background="@drawable/resback1">
 
     <ListView
         android:id="@+id/restUList"
+        style="@android:style/Widget.ListView"
         android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="110dp"
         android:layout_marginBottom="60dp"
-        android:background="@android:color/holo_orange_light"
-        android:divider="#c98"
-        android:dividerHeight="5dp"
+        android:background="#7DF7DDDD"
+        android:divider="#595"
+        android:dividerHeight="7dp"
         android:fadingEdge="vertical"
         android:focusable="auto"
         android:footerDividersEnabled="true"
         android:headerDividersEnabled="true"
-        android:listSelector="#764a12"
-        android:padding="10dp"
+        android:padding="20dp"
         android:textAlignment="gravity" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/mrlabel"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#000011"
+        android:paddingLeft="58dp"
+        android:paddingTop="13dp"
+        android:text="Select Restaurant to Modify"
+        android:textColor="#D7D8E4"
+        android:textSize="23sp"
+        android:textStyle="normal|bold" />
+
+</RelativeLayout>

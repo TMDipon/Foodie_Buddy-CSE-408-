@@ -4,55 +4,57 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.foodie_buddy.loginActivity"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/login"
+    tools:context="com.example.foodie_buddy.loginActivity">
 
     <EditText
+        android:id="@+id/logmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="180dp"
-        android:id="@+id/logmail"
         android:hint="Enter email address"
+        android:inputType="textEmailAddress"
         android:padding="15dp" />
 
     <EditText
+        android:id="@+id/logpass"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:layout_marginLeft="55dp"
         android:layout_marginTop="250dp"
-        android:id="@+id/logpass"
-        android:padding="15dp"
-        android:hint="Enter password:"/>
+        android:hint="Enter password:"
+        android:inputType="textPassword"
+        android:padding="15dp" />
 
     <Button
-        android:text="Log in"
+        android:id="@+id/lin"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="350dp"
-        android:id="@+id/lin"
         android:layout_centerHorizontal="true"
-        android:padding="14dp"
+        android:layout_marginTop="350dp"
         android:background="@color/colorPrimaryDark"
+        android:onClick="log_in"
+        android:padding="14dp"
+        android:text="Log in"
         android:textColor="@android:color/background_light"
-        android:textStyle="normal|bold"
         android:textSize="18sp"
-        android:onClick="log_in" />
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/signin"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="45dp"
         android:layout_marginTop="480dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#BB1A2C"
         android:clickable="true"
         android:onClick="signin"
-        android:paddingLeft="30dp"
+        android:paddingLeft="20dp"
         android:paddingTop="11dp"
+        android:paddingRight="20dp"
         android:text="Don't Have an Account? Sign in"
-        android:textColor="@android:color/holo_orange_light"
+        android:textColor="#F0EFEC"
         android:textSize="18sp" />
 </RelativeLayout>

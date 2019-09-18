@@ -1,3 +1,4 @@
+
 package com.example.foodie_buddy;
 
 import androidx.annotation.NonNull;
@@ -27,7 +28,9 @@ public class ChangeFoodPrice extends AppCompatActivity {
 
     private int fid;
     private EditText t;
+    private TextView tv;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +38,8 @@ public class ChangeFoodPrice extends AppCompatActivity {
 
         Intent j = getIntent();
         fid = (int) j.getSerializableExtra("foodId");
+        tv = (TextView)findViewById(R.id.curpriceval);
+        tv.setText("BDT "+Double.toString(sharedOwnerManager.getInstance(getApplicationContext()).getFoodPriceinCache(fid)));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

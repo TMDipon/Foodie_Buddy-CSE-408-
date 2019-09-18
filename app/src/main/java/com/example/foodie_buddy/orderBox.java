@@ -2,10 +2,13 @@ package com.example.foodie_buddy;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,6 +22,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +33,106 @@ import java.util.Locale;
 import java.util.Map;
 
 public class orderBox extends AppCompatActivity {
+
+    public Order order;
+
+    @Override
+    public void onBackPressed()
+    {
+        if(sharedPrefManager.getInstance(getApplicationContext()).getOrderSource() == 1)
+        {
+            new AlertDialog.Builder(this)
+                    .setTitle("Exit?")
+                    .setMessage("Are you sure you want to exit?\nYour order will be lost")
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            int orderId = sharedPrefManager.getInstance(getApplicationContext()).getOrderNo();
+                            int idx = orderManager.getOrderIndex(orderId);
+                            order = null;
+                            startActivity(new Intent(getApplicationContext(),userProfile.class));
+                        }
+                    }).create().show();
+        }
+        else
+        {
+            orderBox.super.onBackPressed();
+        }
+    }
+
+    public void storeOrder(View v)
+    {
+        if(sharedPrefManager.getInstance(getApplicationContext()).getOrderSource() == 0) {
+            StringRequest s = new StringRequest(Request.Method.POST, constants.placeOrder_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    order.setOrderId(Integer.parseInt(response));
+                    order.setOrderStatus("Looking for rider");
+                    order.start(getApplicationContext());
+                    orderManager.Add(order);
+                    Toast.makeText(getApplicationContext(), "Order given successfully", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), userProfile.class));
+                    finishAffinity();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), error.toString() + " vollyerror", Toast.LENGTH_LONG).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> m = new HashMap<>();
+                    m.put("uid", order.getUserId());
+                    m.put("rid", order.getRestaurantId());
+                    m.put("ulati", Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLatitude()));
+                    m.put("ulongi", Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLongitude()));
+                    m.put("reslati", Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLatitude()));
+                    m.put("reslongi", Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLongitude()));
+                    for (int i = 0; i < order.getUniqueItemNumbers(); i++) {
+                        m.put(Integer.toString(i), order.getOrdered_Items().get(i).getOrderItemDesc());
+                    }
+                    m.put("numbers", Integer.toString(order.getUniqueItemNumbers()));
+
+                    return m;
+                }
+            };
+
+            RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(s);
+        }
+        else if(sharedPrefManager.getInstance(getApplicationContext()).getOrderSource() == 1)
+        {
+            StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatusonReorder_URL, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    order.setOrderStatus("Looking for rider");
+                    order.start(getApplicationContext());
+                    //orderManager.Add(order);
+                    Toast.makeText(getApplicationContext(), "Order given again successfully", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), userProfile.class));
+                    finish();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getApplicationContext(), error.toString() + " vollyerror", Toast.LENGTH_LONG).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> m = new HashMap<>();
+                    m.put("oid", Integer.toString(order.getOrderId()));
+                    m.put("order_stat", "Looking for Rider");
+
+                    return m;
+                }
+            };
+
+            RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(s);
+
+        }
+    }
 
     public String getAddress(double lat,double lng) throws IOException
     {
@@ -51,8 +157,17 @@ public class orderBox extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_box);
 
-        Intent j = getIntent();
-        final Order order = (Order) j.getSerializableExtra("sampleObject");
+        final Intent j = getIntent();
+        if(sharedPrefManager.getInstance(getApplicationContext()).getOrderSource() == 0)
+        {
+            order = (Order) j.getSerializableExtra("sampleObject");
+        }
+        else
+        {
+            int orderId = sharedPrefManager.getInstance(getApplicationContext()).getOrderNo();
+            int idx = orderManager.getOrderIndex(orderId);
+            order = orderManager.getOrder(idx);
+        }
 
         String tem = null;
         try {
@@ -115,50 +230,6 @@ public class orderBox extends AppCompatActivity {
         tv3.setText("BDT " + Double.toString(tax));
         tv4.setText("BDT " + Double.toString(dfee));
         tv5.setText("BDT " + Double.toString(total));
-
-
-        Button giveOrder = (Button) findViewById(R.id.confodr);
-
-        giveOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StringRequest s = new StringRequest(Request.Method.POST, constants.placeOrder_URL, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        Toast.makeText(orderBox.this, response, Toast.LENGTH_SHORT).show();
-                        finish();
-                        startActivity(new Intent(getApplicationContext(),userProfile.class));
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }) {
-                    @Override
-                    protected Map<String, String> getParams() throws AuthFailureError {
-                        Map<String, String> m = new HashMap<>();
-                        m.put("uid", order.getUserId());
-                        m.put("rid", order.getRestaurantId());
-                        m.put("ulati",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLatitude()));
-                        m.put("ulongi",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getLongitude()));
-                        m.put("reslati",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLatitude()));
-                        m.put("reslongi",Double.toString(sharedPrefManager.getInstance(getApplicationContext()).getresLongitude()));
-                        for (int i = 0; i < order.getUniqueItemNumbers(); i++) {
-                            m.put(Integer.toString(i), order.getOrdered_Items().get(i).getOrderItemDesc());
-                        }
-                        m.put("numbers",Integer.toString(order.getUniqueItemNumbers()));
-
-                        return m;
-                    }
-                };
-
-                RequestHandler.getInstance(getApplicationContext()).addToRequestQueue(s);
-            }
-
-
-
-        });
 
     }
 }

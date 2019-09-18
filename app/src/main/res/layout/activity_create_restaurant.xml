@@ -4,19 +4,20 @@
     android:id="@+id/activity_user_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/resback3"
     android:clickable="false"
     tools:context="com.example.foodie_buddy.createRestaurant">
 
     <EditText
         android:id="@+id/rname"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Enter Restaurant name:"
         android:inputType="textPersonName"
+        android:textColor="#050A27"
         tools:layout_editor_absoluteX="15dp"
         tools:layout_editor_absoluteY="25dp" />
 
@@ -103,8 +104,9 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="260dp"
         android:ems="10"
-        android:hint="House Name: Provide if exist"
-        android:inputType="textPersonName" />
+        android:hint="House Name: Provide if exists"
+        android:inputType="textPersonName"
+        android:textColor="#050A27" />
 
     <EditText
         android:id="@+id/level"
@@ -124,19 +126,20 @@
         android:layout_marginTop="330dp"
         android:ems="10"
         android:hint="Enter phone number: "
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="#050A27" />
 
     <Button
         android:id="@+id/crRes"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="160dp"
-        android:layout_height="80dp"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="440dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#F1EDDE"
         android:onClick="createRes"
         android:text="Register Restaurant"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="#030B36"
         android:textSize="18sp"
         android:textStyle="normal|bold" />
 

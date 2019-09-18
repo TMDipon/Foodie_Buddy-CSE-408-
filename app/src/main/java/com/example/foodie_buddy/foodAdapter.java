@@ -2,6 +2,7 @@ package com.example.foodie_buddy;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +25,7 @@ import java.util.Map;
 public class foodAdapter extends BaseAdapter implements ListAdapter {
     private ArrayList<FoodItem> list = new ArrayList<FoodItem>();
     private Context context;
-    private Order order; //This will be the order given
+    public Order order; //This will be the order given
 
     public foodAdapter(ArrayList<FoodItem> list, Context context, Order o) {
         this.list = list;
@@ -74,6 +75,7 @@ public class foodAdapter extends BaseAdapter implements ListAdapter {
 
         if(order.findFood(list.get(position).getFoodId()) != -1)
         {
+            Log.i("Position",Integer.toString(position));
             plus.setVisibility(View.VISIBLE);
             minus.setVisibility(View.VISIBLE);
             add.setEnabled(false);
@@ -102,7 +104,6 @@ public class foodAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 int am = order.Add(list.get(position).getFoodId(),list.get(position).getFoodName(),list.get(position).getFoodPrice());
-                String tmp = list.get(position).getFoodName();
                 plus.setVisibility(View.VISIBLE);
                 minus.setVisibility(View.VISIBLE);
                 add.setText(Integer.toString(am));

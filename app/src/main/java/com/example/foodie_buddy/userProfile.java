@@ -4,9 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -39,13 +45,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class userProfile extends AppCompatActivity {
+public class userProfile extends AppCompatActivity implements Serializable {
 
     public TabLayout tabs;
 
@@ -106,6 +113,7 @@ public class userProfile extends AppCompatActivity {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +127,8 @@ public class userProfile extends AppCompatActivity {
             startActivity(i);
         }
 
+        sharedPrefManager.getInstance(getApplicationContext()).saveLocation(23.726665, 90.388138);
+
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);//It will allow us to access the location service on the phone
 
         locationListener = new LocationListener() {
@@ -126,6 +136,7 @@ public class userProfile extends AppCompatActivity {
             @Override
             public void onLocationChanged(Location location) {
                 sharedPrefManager.getInstance(getApplicationContext()).saveLocation(location.getLatitude(), location.getLongitude());
+                //Toast.makeText(userProfile.this, Double.toString(location.getLatitude()) +" "+Double.toString(location.getLongitude()), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -144,7 +155,6 @@ public class userProfile extends AppCompatActivity {
                 return;
             }
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
         }
         else
         {
@@ -159,6 +169,102 @@ public class userProfile extends AppCompatActivity {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
 
+        }
+
+        /*
+        if(orderManager.getLength() > 0)
+        {
+            ArrayList<Order> orders = orderManager.getCurrentOrders();
+            String temp = "Orders id: ";
+            for(int i=0;i<orders.size();i++)
+            {
+                temp += Integer.toString(orders.get(i).getOrderId());
+            }
+
+            Toast.makeText(this, temp, Toast.LENGTH_LONG).show();
+        }
+        */
+
+        int cstat = sharedPrefManager.getInstance(getApplicationContext()).getOrderCompletion();
+        if(cstat == 2)//Order cancelled as no rider found
+        {
+            int orderId = sharedPrefManager.getInstance(getApplicationContext()).getOrderNo();
+            int idx = orderManager.getOrderIndex(orderId);
+
+            Order tem = orderManager.getOrder(idx);
+            tem.cancel();
+            String tem1 = new String("");
+            tem1 = tem.getRestaurantName();
+
+            //orderManager.Remove(idx);
+            sharedPrefManager.getInstance(getApplicationContext()).saveOrderCompletetion(0);
+
+            sharedPrefManager.getInstance(getApplicationContext()).saveOrderSource(1);
+
+
+            Intent intent = new Intent(getApplicationContext(), orderBox.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+
+            NotificationManager notificationManager = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                CharSequence name = "channel1";
+                String description = "Created for notification";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = new NotificationChannel("1", name, importance);
+                channel.setDescription(description);
+                notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "1")
+                    .setContentTitle("Order Cancelled")
+                    .setContentText("Your order from "+tem1+" has been cancelled as no rider found\nTap to repeat this order")
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText("Your order from "+tem1+" has been cancelled as no rider found\nTap to repeat this order"))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setSmallIcon(android.R.drawable.sym_def_app_icon)
+                    .setAutoCancel(true);
+
+            notificationManager.notify(0, notification.build());
+        }
+        else if(cstat == 1)//Order Completed
+        {
+            Intent in = new Intent(getApplicationContext(), foodConfirmed.class);
+            startActivity(in);
+        }
+        else if(cstat == 3)//Order in progress
+        {
+            int orderId = sharedPrefManager.getInstance(getApplicationContext()).getOrderNo();
+            int idx = orderManager.getOrderIndex(orderId);
+
+            Order tem = orderManager.getOrder(idx);
+            String tem1 = tem.getOrderStatus();
+
+            NotificationManager notificationManager = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                CharSequence name = "channel1";
+                String description = "Created for notification";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = new NotificationChannel("1", name, importance);
+                channel.setDescription(description);
+                notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "1")
+                    .setContentTitle("Order progress")
+                    .setContentText(tem1)
+                    .setStyle(new NotificationCompat.BigTextStyle()
+                            .bigText(tem1))
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setSmallIcon(android.R.drawable.sym_def_app_icon)
+                    .setAutoCancel(true);
+
+            notificationManager.notify(0, notification.build());
+
+            sharedPrefManager.getInstance(getApplicationContext()).saveOrderCompletetion(0);
         }
 
         //Here starts the code for ui of the initial page of user profile
@@ -221,26 +327,18 @@ public class userProfile extends AppCompatActivity {
                     for(int i=0;i<J.length();i++)
                     {
                         JSONObject k = J.getJSONObject(i);
-                        String address = getAddress(k.getString("district"),k.getString("area"),k.getString("Road_name"),k.getString("Road_no"),k.getString("House_name"),k.getString("House_no"));
-                        LatLng ll = getLocationFromAddress(getApplicationContext(),address);
-                        if(ll == null)
-                        {
-                            Toast.makeText(userProfile.this, address, Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            if(k.getString("type").equals(t))
-                            {
-                                second.setLatitude(ll.latitude);
-                                second.setLongitude(ll.longitude);
 
-                                double distanceInMeters = first.distanceTo(second)/1000.0;
-                                //Toast.makeText(userProfile.this,k.getString("name")+" "+Double.toString(distanceInMeters), Toast.LENGTH_SHORT).show();
-                                if(distanceInMeters <= 3.00000)
-                                {
-                                    Restaurants r = new Restaurants(k.getInt("id"),k.getString("name"),k.getString("type"),k.getString("starts_at"),k.getString("closes_at"),ll.latitude,ll.longitude);
-                                    rests.add(r);
-                                }
+                        if(k.getString("type").equals(t))
+                        {
+                            second.setLatitude(Double.parseDouble(k.getString("latitude")));
+                            second.setLongitude(Double.parseDouble(k.getString("longitude")));
+
+                            double distanceInMeters = first.distanceTo(second)/1000.0;
+                            //Toast.makeText(userProfile.this,k.getString("name")+" "+Double.toString(distanceInMeters), Toast.LENGTH_SHORT).show();
+                            if(distanceInMeters <= 4.500000)
+                            {
+                                Restaurants r = new Restaurants(k.getInt("id"),k.getString("name"),k.getString("type"),k.getString("starts_at"),k.getString("closes_at"),second.getLatitude(),second.getLongitude());
+                                rests.add(r);
                             }
                         }
                     }
@@ -266,7 +364,7 @@ public class userProfile extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.sidebar_menu,menu);
         return true;
     }
 
@@ -276,8 +374,12 @@ public class userProfile extends AppCompatActivity {
         {
             case R.id.menulogout:
                 sharedPrefManager.getInstance(this).logout();
-                finish();
+                finishAffinity();
                 startActivity(new Intent(this,loginActivity.class));
+                break;
+
+            case R.id.menuOrders:
+                startActivity(new Intent(getApplicationContext(),currentOrders.class));
                 break;
         }
         return true;

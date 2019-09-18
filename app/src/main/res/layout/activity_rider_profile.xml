@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/riderback"
     tools:context=".riderProfile">
 
     <TextView
@@ -12,23 +13,23 @@
         android:layout_height="80dp"
         android:layout_marginLeft="52dp"
         android:layout_marginTop="150dp"
-        android:background="#36CBD1D0"
+        android:background="#36A4CABC"
         android:paddingLeft="30dp"
         android:paddingTop="10dp"
         android:text="Currently Offline,  Click below to search for orders"
-        android:textColor="@android:color/background_dark"
+        android:textColor="#000107"
         android:textSize="22sp" />
 
     <Button
         android:id="@+id/changeRStat"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:layout_width="120dp"
+        style="@android:style/Widget.Button"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="280dp"
-        android:background="#EC1313"
+        android:background="#D30808"
         android:onClick="changeLookStatus"
         android:text="Go Online"
-        android:textColor="#0A0A0A"
+        android:textColor="#000413"
         android:textSize="17sp" />
 </RelativeLayout>

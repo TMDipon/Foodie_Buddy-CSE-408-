@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".foodConfirmed">
+
+    <TextView
+        android:id="@+id/userReceiveOrderLabel"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="#555445"
+        android:paddingLeft="85dp"
+        android:paddingTop="27dp"
+        android:text="Receive your Order"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/userOrderItemsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="110dp"
+        android:background="#81817F"
+        android:paddingLeft="85dp"
+        android:paddingTop="18dp"
+        android:text="Your Ordered Items"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+
+    <ListView
+        android:id="@+id/userOrderItems"
+        android:layout_width="390dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="195dp"
+        android:paddingLeft="10dp"
+        android:dividerHeight="6dp" />
+
+    <TextView
+        android:id="@+id/userPay"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="470dp"
+        android:background="#ffefff"
+        android:paddingLeft="35sp"
+        android:paddingTop="12sp"
+        android:text="Amount to pay : "
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/userPayVal1"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="470dp"
+        android:background="#ffefff"
+        android:paddingLeft="80sp"
+        android:paddingTop="12sp"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/paid"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="575dp"
+        android:background="#00ff57"
+        android:onClick="pay"
+        android:text="Make your payment"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

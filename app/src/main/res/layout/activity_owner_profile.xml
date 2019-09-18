@@ -4,56 +4,42 @@
     android:id="@+id/activity_user_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/add"
     android:clickable="false"
     tools:context="com.example.foodie_buddy.ownerProfile">
 
     <Button
         android:id="@+id/adr"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="125dp"
         android:layout_marginTop="250dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="addRestaurant"
+        android:padding="8dp"
         android:text="Add Restaurant"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="18sp"
+        android:textSize="19sp"
         android:textStyle="normal|bold"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="168dp" />
 
     <Button
         android:id="@+id/chr"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
         android:layout_marginTop="340dp"
         android:background="@color/colorPrimaryDark"
         android:onClick="changeRestaurant"
+        android:padding="8dp"
         android:text="Modify Restaurant"
         android:textColor="@android:color/holo_orange_light"
-        android:textSize="18sp"
+        android:textSize="19sp"
         android:textStyle="normal|bold"
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="168dp" />
 
-    <TextView
-        android:id="@+id/onrname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="15dp"
-        android:text="Welcome:"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"/>
-
-    <TextView
-        android:id="@+id/nm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="15dp"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"/>
 </RelativeLayout>

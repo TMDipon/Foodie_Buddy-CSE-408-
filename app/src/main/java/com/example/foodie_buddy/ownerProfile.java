@@ -66,9 +66,6 @@ public class ownerProfile extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, ownerLogin.class));
         }
-
-        TextView t = (TextView)findViewById(R.id.nm);
-        t.setText(sharedOwnerManager.getInstance(getApplicationContext()).getOwnerName());
     }
 
     @Override

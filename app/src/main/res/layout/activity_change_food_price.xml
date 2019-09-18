@@ -4,40 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FCF7F2"
     tools:context=".ChangeFoodPrice">
 
     <TextView
         android:id="@+id/cfpDesc"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="100dp"
-        android:background="@android:color/darker_gray"
-        android:paddingLeft="45dp"
-        android:paddingTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:background="#F1ECEC"
+        android:paddingLeft="5dp"
+        android:paddingTop="12dp"
+        android:paddingRight="5dp"
         android:text="Provide the new price below"
-        android:textColor="@android:color/background_light"
-        android:textSize="26sp"
+        android:textColor="#040C3C"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
         android:id="@+id/cfp"
-        android:layout_width="140dp"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="210dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="240dp"
         android:ems="10"
         android:inputType="numberDecimal" />
 
     <TextView
+        android:id="@+id/curpricelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="170dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="8dp"
+        android:text="Current Price :"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/curpriceval"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginLeft="210dp"
+        android:layout_marginTop="170dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="8dp"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/cfpnp"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="210dp"
-        android:paddingLeft="22dp"
+        android:layout_marginTop="240dp"
+        android:paddingLeft="15dp"
         android:paddingTop="8dp"
-        android:text="New Price:"
-        android:textSize="24sp"
+        android:text="New Price :"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <Button
@@ -46,7 +72,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="110dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="340dp"
         android:onClick="changePrice"
         android:text="Change Price"
         android:textSize="20sp"

@@ -25,27 +25,27 @@
         android:layout_width="390dp"
         android:layout_height="250dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="180dp"
         android:dividerHeight="6dp" />
 
     <TextView
         android:id="@+id/odrpay2"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="470dp"
         android:background="#ffefff"
         android:paddingLeft="25sp"
         android:paddingTop="12sp"
         android:text="Amount to receive : "
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/odrpayval2"
         android:layout_width="210dp"
         android:layout_height="50dp"
         android:layout_marginLeft="200dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="470dp"
         android:background="#ffefff"
         android:paddingLeft="80sp"
         android:paddingTop="12sp"
@@ -57,10 +57,24 @@
         android:layout_width="match_parent"
         android:layout_height="65dp"
         android:layout_marginTop="575dp"
+        android:layout_alignParentBottom="true"
         android:background="#00ff55"
         android:onClick="paymentTaken"
         android:text="Payment Received"
         android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/itemtodeliverLabel"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="110dp"
+        android:paddingLeft="115dp"
+        android:paddingTop="12dp"
+        android:text="Items to Deliver"
+        android:textSize="23dp"
         android:textStyle="bold" />
 
 </RelativeLayout>

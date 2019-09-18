@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Foodie_Buddy</string>
+    <string name="app_name">Foodie Buddy</string>
     <string name="google_maps_key">AIzaSyAbasXYARtSpIEDrNiFL2R0l_mKbmgWv4M</string>
 
     <string-array name="district">
@@ -17,6 +17,7 @@
         <item>Gulshan</item>
         <item>Kakrail</item>
         <item>Khilgaon</item>
+        <item>Lalbagh</item>
         <item>Mirpur</item>
         <item>Mohammadpur</item>
         <item>Motijheel</item>

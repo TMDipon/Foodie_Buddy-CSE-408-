@@ -183,6 +183,101 @@ public class sharedOwnerManager {
         catch(JSONException x){}
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public double getFoodPriceinCache(int id)
+    {
+        double price = 0.0;
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        try
+        {
+            JSONArray J =new JSONArray(s.getString(curRestFoods,null));
+            for(int i=0;i<J.length();i++)
+            {
+                JSONObject k = J.getJSONObject(i);
+                if(k.getInt("id") == id)
+                {
+                    price = k.getDouble("unit_price");
+                    break;
+                }
+            }
+        }
+        catch(JSONException x){}
+
+        return price;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void changeFoodDescriptioninCache(int id,String desc)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        try
+        {
+            JSONArray J =new JSONArray(s.getString(curRestFoods,null));
+            for(int i=0;i<J.length();i++)
+            {
+                JSONObject k = J.getJSONObject(i);
+                if(k.getInt("id") == id)
+                {
+                    k.put("description",desc);
+                    break;
+                }
+            }
+
+            String tmp = J.toString();
+            e.putString(curRestFoods,tmp);
+            e.apply();
+        }
+        catch(JSONException x){}
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String getFoodDescriptioninCache(int id)
+    {
+        String temp = new String("");
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        try
+        {
+            JSONArray J =new JSONArray(s.getString(curRestFoods,null));
+            for(int i=0;i<J.length();i++)
+            {
+                JSONObject k = J.getJSONObject(i);
+                if(k.getInt("id") == id)
+                {
+                    temp = k.getString("description");
+                    break;
+                }
+            }
+        }
+        catch(JSONException x){}
+        return temp;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String getFoodNameinCache(int id)
+    {
+        String temp = new String("");
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        try
+        {
+            JSONArray J =new JSONArray(s.getString(curRestFoods,null));
+            for(int i=0;i<J.length();i++)
+            {
+                JSONObject k = J.getJSONObject(i);
+                if(k.getInt("id") == id)
+                {
+                    temp = k.getString("name");
+                    break;
+                }
+            }
+        }
+        catch(JSONException x){}
+        return temp;
+    }
+
     public boolean logout()
     {
         SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);

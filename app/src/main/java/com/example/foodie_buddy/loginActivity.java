@@ -85,7 +85,7 @@ public class loginActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     p.hide();
-                    Toast.makeText(loginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(loginActivity.this, error.getMessage()+"haha", Toast.LENGTH_LONG).show();
                 }
             }) {
                 @Override

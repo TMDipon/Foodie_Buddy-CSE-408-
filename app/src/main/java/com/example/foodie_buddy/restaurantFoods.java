@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,12 +25,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class restaurantFoods extends AppCompatActivity {
 
     public Order order;
-    public TabLayout tb;
+    private TabLayout tb;
     public Button b;
 
     @Override
@@ -39,8 +44,10 @@ public class restaurantFoods extends AppCompatActivity {
         }
         else if(tb.getTabCount() == 1)
         {
-            //Toast.makeText(this, Boolean.toString(tb.getTabAt(0).isSelected()), Toast.LENGTH_SHORT).show();
+            tb.addTab(tb.newTab().setText("Temp"));
+            tb.getTabAt(1).select();
             tb.getTabAt(0).select();
+            tb.removeTabAt(1);
         }
     }
 
@@ -130,7 +137,9 @@ public class restaurantFoods extends AppCompatActivity {
                         if(order.getOrderStat() != 0)
                         {
                             Intent i = new Intent(getApplicationContext(), orderBox.class);
-                            i.putExtra("sampleObject",order);
+                            i.putExtra("sampleObject", order);
+                            sharedPrefManager.getInstance(getApplicationContext()).saveOrderSource(0);
+                            //startActivityForResult(i, 2);
                             startActivity(i);
                         }
                         else
@@ -157,7 +166,7 @@ public class restaurantFoods extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.sidebar_menu,menu);
         return true;
     }
 
@@ -169,6 +178,10 @@ public class restaurantFoods extends AppCompatActivity {
                 sharedPrefManager.getInstance(this).logout();
                 finishAffinity();
                 startActivity(new Intent(this,loginActivity.class));
+                break;
+
+            case R.id.menuOrders:
+                startActivity(new Intent(getApplicationContext(),currentOrders.class));
                 break;
         }
         return true;

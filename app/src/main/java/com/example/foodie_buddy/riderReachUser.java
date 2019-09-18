@@ -67,7 +67,8 @@ public class riderReachUser extends AppCompatActivity implements OnMapReadyCallb
         second.setLongitude(sharedRiderManager.getInstance(getApplicationContext()).getuserLongitude());
 
         double distance = first.distanceTo(second);
-        if(distance < 150.0000)
+        //if(distance < 150.0000)
+        if(1==1)
         {
             StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
                 @Override
@@ -97,7 +98,7 @@ public class riderReachUser extends AppCompatActivity implements OnMapReadyCallb
         }
         else
         {
-            Toast.makeText(this, Double.toString(distance)+" Yoy are not in the delivery location\nReach there and then deliver the order", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Yoy are not in the delivery location\n"+Double.toString(Math.round(distance))+" Meters away\n"+"Reach there and then deliver the order", Toast.LENGTH_LONG).show();
         }
     }
 

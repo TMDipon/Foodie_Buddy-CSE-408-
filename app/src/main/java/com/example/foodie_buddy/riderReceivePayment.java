@@ -29,13 +29,11 @@ public class riderReceivePayment extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Please receive your payment first\nThen look for another order if you want", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Please receive your payment first\nThen you can look for another order if you want", Toast.LENGTH_LONG).show();
     }
 
     public void paymentTaken(View v)
     {
-        if(oad.allChecked())
-        {
             //start new activity to look for further orders
             StringRequest s = new StringRequest(Request.Method.POST, constants.updateOrderStatus_URL, new Response.Listener<String>() {
                 @Override
@@ -62,11 +60,7 @@ public class riderReceivePayment extends AppCompatActivity {
             finish();
             startActivity(new Intent(getApplicationContext(),riderProfile.class));
             Toast.makeText(this, "Order deliver completed", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Toast.makeText(this, "Please deliver all of the items first and take your payment", Toast.LENGTH_LONG).show();
-        }
+
     }
 
     @Override

@@ -38,12 +38,12 @@
 
     <Button
         android:id="@+id/minus"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@android:style/Widget.Button"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="210dp"
         android:layout_marginTop="130dp"
-        android:background="@android:color/holo_purple"
+        android:background="#EBCCEE"
         android:text="-"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
@@ -52,12 +52,12 @@
 
     <Button
         android:id="@+id/Addfood"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@android:style/Widget.Button"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="240dp"
         android:layout_marginTop="130dp"
-        android:background="@android:color/holo_purple"
+        android:background="#EBCCEE"
         android:text="Add"
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
@@ -65,12 +65,12 @@
 
     <Button
         android:id="@+id/plus"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        style="@android:style/Widget.Button"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="130dp"
-        android:background="@android:color/holo_purple"
+        android:background="#EBCCEE"
         android:text="+"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"

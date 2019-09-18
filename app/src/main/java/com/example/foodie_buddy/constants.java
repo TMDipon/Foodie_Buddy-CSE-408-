@@ -1,10 +1,16 @@
 package com.example.foodie_buddy;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.CountDownTimer;
+import android.widget.Toast;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class constants {
-    //private static final String ROOT_URL = "http://192.168.0.113/Test_F_Buddy/web_services/";
+
+    //private static final String ROOT_URL = "http://192.168.43.28/foodie_buddy/public/api/";
     private static  final String ROOT_URL = "http://10.0.2.2:8000/api/";
     public static final String cuser_URL = ROOT_URL+"createUser";
     public static final String luser_URL = ROOT_URL+"loginUser";
@@ -13,13 +19,17 @@ public class constants {
     public static final String modfoodshow_URL = ROOT_URL+"delshowfood";
     public static final String deleteFood_URL = ROOT_URL+"deleteFood";
     public static final String changeFoodPrice_URL = ROOT_URL+"changeFoodPrice";
+    public static final String changeFoodDescription_URL = ROOT_URL+"changeFoodDescription";
     public static final String showres_URL = ROOT_URL+"restaurants";
     public static final String lowner_URL = ROOT_URL+"loginOwner";
     public static final String cres_URL = ROOT_URL+"createRestaurant";
     public static final String showfoods_URL = ROOT_URL+"foodByRestaurant";
     public static final String addFood_URL = ROOT_URL+"insertFood";
+    public static final String updateOrderStatusonCancel_URL = ROOT_URL+"updateOrderStatusonCancellation";
+    public static final String updateOrderStatusonReorder_URL = ROOT_URL+"updateOrderStatusonReorder";
 
     public static final String placeOrder_URL = ROOT_URL+"placeOrder";
+    public static final String getOrderStatus_URL = ROOT_URL+"getOrderStatus";
 
     public static final String crider_URL = ROOT_URL+"createRider";
     public static final String lrider_URL = ROOT_URL+"loginRider";

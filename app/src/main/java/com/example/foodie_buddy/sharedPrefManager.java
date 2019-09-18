@@ -26,6 +26,11 @@ public class sharedPrefManager {
     private static final String ordreslat = "reslatitude";
     private static final String ordreslng = "reslongitude";
 
+    //Order related tokens
+    private static final String order_index = "orderno";
+    private static final String order_complete = "orderComplete";
+    private static final String order_source = "ordersrc";//0->genuine, 1->reorder
+
     private sharedPrefManager(Context context) {
         ctx = context;
     }
@@ -66,6 +71,48 @@ public class sharedPrefManager {
         e.apply();
 
         return true;
+    }
+
+    public void saveOrderCompletetion(int i)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putInt(order_complete,i);
+        e.apply();
+    }
+
+    public int getOrderCompletion()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getInt(order_complete,-1);
+    }
+
+    public void saveOrderNo(int i)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putInt(order_index,i);
+        e.apply();
+    }
+
+    public int getOrderSource()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getInt(order_source,-1);
+    }
+
+    public void saveOrderSource(int i)
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        SharedPreferences.Editor e = s.edit();
+        e.putInt(order_source,i);
+        e.apply();
+    }
+
+    public int getOrderNo()
+    {
+        SharedPreferences s = ctx.getSharedPreferences(MyPREFERENCES,ctx.MODE_PRIVATE);
+        return s.getInt(order_index,-1);
     }
 
     public void saveLocation(double lati, double longi)

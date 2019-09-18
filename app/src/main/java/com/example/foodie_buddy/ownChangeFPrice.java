@@ -24,8 +24,18 @@ public class ownChangeFPrice extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        tb.getTabAt(1).select();
-        tb.getTabAt(0).select();
+        if(tb.getTabCount() >= 2)
+        {
+            tb.getTabAt(1).select();
+            tb.getTabAt(0).select();
+        }
+        else if(tb.getTabCount() == 1)
+        {
+            tb.addTab(tb.newTab().setText("Temp"));
+            tb.getTabAt(1).select();
+            tb.getTabAt(0).select();
+            tb.removeTabAt(1);
+        }
     }
 
     @Override

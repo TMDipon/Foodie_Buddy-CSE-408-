@@ -4,22 +4,9 @@
     android:id="@+id/activity_user_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/userlogin"
     android:clickable="false"
     tools:context="com.example.foodie_buddy.owner">
-
-    <TextView
-        android:id="@+id/Ureg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimaryDark"
-        android:padding="10dp"
-        android:text="Register Here"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/ownerpassword"
@@ -53,19 +40,20 @@
         android:id="@+id/oname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="7dp"
+        android:layout_marginTop="100dp"
         android:ems="10"
         android:hint="Enter name:"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/owreg"
+        style="@android:style/Widget.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="340dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="#2B6963"
         android:onClick="registerOwner"
         android:text="Register"
         android:textColor="@android:color/background_light"

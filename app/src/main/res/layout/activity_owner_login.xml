@@ -4,7 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/login"
     tools:context="com.example.foodie_buddy.ownerLogin">
 
     <EditText
@@ -33,7 +33,7 @@
         android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="350dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#285752"
         android:onClick="owner_log_in"
         android:padding="14dp"
         android:text="Log in"
@@ -47,12 +47,12 @@
         android:layout_height="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="480dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#2A5A56"
         android:clickable="true"
         android:onClick="osign_in"
         android:paddingLeft="22dp"
         android:paddingTop="11dp"
-        android:text="Don't Have an Account? Sign in"
+        android:text="Don't have an Account? Sign up"
         android:textColor="@android:color/background_light"
         android:textSize="19sp" />
 </RelativeLayout>

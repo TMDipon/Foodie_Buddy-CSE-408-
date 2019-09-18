@@ -16,13 +16,13 @@
 
     <Button
         android:id="@+id/userPhn"
-        android:text="Call Customer"
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:background="#D9EB51"
         android:onClick="makeCallUser"
-        android:background="#ccff5d"
+        android:text="Call Customer"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/userReached"
