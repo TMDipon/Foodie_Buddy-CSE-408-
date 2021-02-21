@@ -10,8 +10,8 @@ import java.util.Map;
 
 public class constants {
 
-    //private static final String ROOT_URL = "http://192.168.43.28/foodie_buddy/public/api/";
-    private static  final String ROOT_URL = "http://10.0.2.2:8000/api/";
+    private static final String ROOT_URL = "http://192.168.0.104/foodie_buddy/public/api/";
+    //private static  final String ROOT_URL = "http://10.0.2.2:8000/api/";
     public static final String cuser_URL = ROOT_URL+"createUser";
     public static final String luser_URL = ROOT_URL+"loginUser";
     public static final String cowner_URL = ROOT_URL+"createOwner";

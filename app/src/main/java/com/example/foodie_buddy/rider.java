@@ -88,39 +88,27 @@ public class rider extends AppCompatActivity implements AdapterView.OnItemSelect
         t4 = (EditText)findViewById(R.id.riderphone);
         t5 = (EditText)findViewById(R.id.ridernid);
 
-        final String s1 = t1.getText().toString().trim();
-        final String s2 = t2.getText().toString().trim();
-        final String s3 = t3.getText().toString().trim();
-        final String s5 = t4.getText().toString().trim();
-        final String s6 = t5.getText().toString().trim();
+        final HashMap<String, String> map = new HashMap<>();
 
-        String temp = "";
-
-        if(!s5.isEmpty()){
-            temp = s5.substring(0,3);
-        }
+        map.put("name",t1.getText().toString().trim());
+        map.put("password",t2.getText().toString().trim());
+        map.put("email",t3.getText().toString().trim());
+        map.put("phone",t4.getText().toString().trim());
+        map.put("nid",t5.getText().toString().trim());
+        map.put("district",dis);
+        map.put("area",ar);
 
         final ProgressDialog p = new ProgressDialog(this);
 
-        if(s1.isEmpty() || s2.isEmpty() || s3.isEmpty() || s5.isEmpty() || s5.isEmpty() || dis.equals("nil") || ar.equals("nil"))
+        String [] status = validateRegistration.validateRegFields(map);
+
+        if(status[0].equals("0"))
         {
-            Toast.makeText(getApplicationContext(), "Provide all the information to register", Toast.LENGTH_LONG).show();
-        }
-        else if(s5.length() != 11)
-        {
-            Toast.makeText(getApplicationContext(), "Wrong phone number length", Toast.LENGTH_LONG).show();
-        }
-        else if(!(temp.equals("013") || temp.equals("014") || temp.equals("015") || temp.equals("016") || temp.equals("017") || temp.equals("018") || temp.equals("019")))
-        {
-            Toast.makeText(getApplicationContext(), "Invalid phone number", Toast.LENGTH_LONG).show();
-        }
-        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s3).matches())
-        {
-            Toast.makeText(getApplicationContext(), "Email Id is invalid", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), status[1], Toast.LENGTH_LONG).show();
         }
         else {
 
-            p.setMessage("Registering Riser");
+            p.setMessage("Registering Rider");
             p.show();
 
             StringRequest s4 = new StringRequest(Request.Method.POST, constants.crider_URL, new Response.Listener<String>() {
@@ -137,11 +125,6 @@ public class rider extends AppCompatActivity implements AdapterView.OnItemSelect
                             spin_area.setSelection(0);
                             dis = "nil";
                             ar = "nil";
-                            t1.getText().clear();
-                            t2.getText().clear();
-                            t3.getText().clear();
-                            t4.getText().clear();
-                            t5.getText().clear();
                             startActivity(new Intent(getApplicationContext(),riderLogin.class));
                             finish();
                         }
@@ -164,13 +147,13 @@ public class rider extends AppCompatActivity implements AdapterView.OnItemSelect
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
-                    m.put("name", s1);
-                    m.put("email_id", s3);
-                    m.put("phone",s5);
-                    m.put("district",dis);
-                    m.put("area",ar);
-                    m.put("NID",s6);
-                    m.put("password", s2);
+                    m.put("name", map.get("name"));
+                    m.put("email_id", map.get("email"));
+                    m.put("phone",map.get("phone"));
+                    m.put("district",map.get("district"));
+                    m.put("area",map.get("area"));
+                    m.put("NID",map.get("nid"));
+                    m.put("password", map.get("password"));
                     return m;
                 }
             };

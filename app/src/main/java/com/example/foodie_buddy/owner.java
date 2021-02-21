@@ -32,19 +32,19 @@ public class owner extends AppCompatActivity {
         t[1] = (EditText)findViewById(R.id.ownerpassword);
         t[2] = (EditText)findViewById(R.id.owneremail);
 
-        final String s1 = t[0].getText().toString();
-        final String s2 = t[1].getText().toString();
-        final String s3 = t[2].getText().toString();
+        final HashMap<String, String> map = new HashMap<>();
+
+        map.put("name",t[0].getText().toString());
+        map.put("password",t[1].getText().toString());
+        map.put("email",t[2].getText().toString());
 
         final ProgressDialog p = new ProgressDialog(this);
 
-        if(s1.isEmpty() || s2.isEmpty() || s3.isEmpty())
+        String [] status = validateRegistration.validateRegFields(map);
+
+        if(status[0].equals("0"))
         {
-            Toast.makeText(getApplicationContext(), "Provide all the information to register as an owner", Toast.LENGTH_LONG).show();
-        }
-        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s3).matches())
-        {
-            Toast.makeText(getApplicationContext(), "Email Id is invalid", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), status[1], Toast.LENGTH_LONG).show();
         }
         else {
 
@@ -63,10 +63,12 @@ public class owner extends AppCompatActivity {
                         {
                             Toast.makeText(getApplicationContext(), j.getString("info")+"\nNow you can log in", Toast.LENGTH_LONG).show();
                             Intent i = new Intent("com.example.foodie_buddy.ownerLogin");
+                            /*
                             for(int k=0;k<3;k++)
                             {
                                 t[k].getText().clear();
                             }
+                            */
                             startActivity(i);
                             finish();
                         }
@@ -82,15 +84,15 @@ public class owner extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     p.hide();
-                    Toast.makeText(getApplicationContext(), error.getMessage()+"haha", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), error.getMessage()+" error in response", Toast.LENGTH_LONG).show();
                 }
             }) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
-                    m.put("name", s1);
-                    m.put("email_id", s3);
-                    m.put("password", s2);
+                    m.put("name", map.get("name"));
+                    m.put("email_id", map.get("email"));
+                    m.put("password", map.get("password"));
                     return m;
                 }
             };

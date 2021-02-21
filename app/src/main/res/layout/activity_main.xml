@@ -15,45 +15,45 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="false"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="200dp"
         android:padding="10dp"
         android:text="Welcome to Foodie Buddy"
-        android:textColor="#FFD92B60"
-        android:textSize="28sp"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="28dp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/owner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="315dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="345dp"
         android:onClick="Owner"
         android:text="Log in as a Restaurant Owner"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/rider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="410dp"
         android:onClick="Rider"
         android:text="Log in as a Rider"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="normal|bold" />
 
     <Button
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="280dp"
         android:onClick="User"
         android:text="Log in as a User"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:textStyle="normal|bold" />
 
 </RelativeLayout>

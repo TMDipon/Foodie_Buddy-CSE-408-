@@ -32,34 +32,20 @@ public class userActivity extends AppCompatActivity {
         t3 = (EditText)findViewById(R.id.email);
         t4 = (EditText)findViewById(R.id.phone);
 
-        final String s1 = t1.getText().toString().trim();
-        final String s2 = t2.getText().toString().trim();
-        final String s3 = t3.getText().toString().trim();
-        final String s5 = t4.getText().toString().trim();
+        final HashMap<String, String> map = new HashMap<>();
 
-        String temp = "";
-
-        if(!s5.isEmpty()){
-            temp = s5.substring(0,3);
-        }
+        map.put("name",t1.getText().toString());
+        map.put("password",t2.getText().toString());
+        map.put("email",t3.getText().toString());
+        map.put("phone",t4.getText().toString());
 
         final ProgressDialog p = new ProgressDialog(this);
 
-        if(s1.isEmpty() || s2.isEmpty() || s3.isEmpty() || s5.isEmpty())
+        String [] status = validateRegistration.validateRegFields(map);
+
+        if(status[0].equals("0"))
         {
-            Toast.makeText(userActivity.this, "Provide all the information to register", Toast.LENGTH_LONG).show();
-        }
-        else if(s5.length() != 11)
-        {
-            Toast.makeText(userActivity.this, "Wrong phone number length", Toast.LENGTH_LONG).show();
-        }
-        else if(!(temp.equals("013") || temp.equals("014") || temp.equals("015") || temp.equals("016") || temp.equals("017") || temp.equals("018") || temp.equals("019")))
-        {
-            Toast.makeText(userActivity.this, "Invalid phone number", Toast.LENGTH_LONG).show();
-        }
-        else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(s3).matches())
-        {
-            Toast.makeText(getApplicationContext(), "Email Id is invalid", Toast.LENGTH_LONG).show();
+            Toast.makeText(userActivity.this, status[1], Toast.LENGTH_LONG).show();
         }
         else {
 
@@ -103,10 +89,10 @@ public class userActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> m = new HashMap<>();
-                    m.put("name", s1);
-                    m.put("email_id", s3);
-                    m.put("phone",s5);
-                    m.put("password", s2);
+                    m.put("name", map.get("name"));
+                    m.put("email_id", map.get("email"));
+                    m.put("phone", map.get("phone"));
+                    m.put("password", map.get("password"));
                     return m;
                 }
             };

@@ -4,7 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
+    android:background="@drawable/login_back_owner"
     tools:context="com.example.foodie_buddy.ownerLogin">
 
     <EditText
@@ -30,29 +30,28 @@
     <Button
         android:id="@+id/olin"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="360dp"
         android:background="#285752"
         android:onClick="owner_log_in"
-        android:padding="14dp"
+        android:padding="10dp"
         android:text="Log in"
         android:textColor="@android:color/background_light"
-        android:textSize="18sp"
+        android:textSize="17dp"
         android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/osignin"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="480dp"
-        android:background="#2A5A56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="450dp"
+        android:background="#333322"
         android:clickable="true"
         android:onClick="osign_in"
-        android:paddingLeft="22dp"
-        android:paddingTop="11dp"
+        android:padding="10dp"
         android:text="Don't have an Account? Sign up"
-        android:textColor="@android:color/background_light"
-        android:textSize="19sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="17dp" />
 </RelativeLayout>

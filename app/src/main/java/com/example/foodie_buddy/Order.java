@@ -59,7 +59,7 @@ public class Order extends Activity implements Serializable{
 
     public void start(final Context ctx)
     {
-        countDownTimer = new CountDownTimer(480000, 8000) {
+        countDownTimer = new CountDownTimer(600000, 8000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 tickCount++;
@@ -87,7 +87,7 @@ public class Order extends Activity implements Serializable{
                                             ctx.startActivity(in);
                                         }
                                     }
-                                    else if(tickCount == 5 && temp.equalsIgnoreCase("Looking for Rider"))
+                                    else if(tickCount == 10 && temp.equalsIgnoreCase("Looking for Rider"))
                                     {
                                         tickCount = 0;
 
